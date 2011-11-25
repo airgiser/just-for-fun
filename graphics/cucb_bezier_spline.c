@@ -1,7 +1,14 @@
+/*
+ * File: cucb_bezier_spline.c
+ * Author: airfox <airgis@163.com>
+ *
+ * Brief: bezier spline algorithm
+ */
+
 #include "cucb_bezier_spline.h"
 
 /*
- * de Casteljau
+ * de Casteljau algorithm
  */
 static int decas(size_t degree, DPoint *points, double t, DPoint *out_point)
 {
@@ -12,7 +19,6 @@ static int decas(size_t degree, DPoint *points, double t, DPoint *out_point)
 	{
 		return -1;
 	}
-
 	for(i = 0; i < degree; i++)
 	{
 		temp_points[i] = points[i];
@@ -51,6 +57,7 @@ int bezier_spline(size_t degree, DPoint *points,
 	int i = 0;
 	for(i = 0; i < spline_size; i++)
 	{
+		/* Set spline[i] */
 		if(decas(degree, points, t, spline + i) < 0)
 		{
 			return -1;
