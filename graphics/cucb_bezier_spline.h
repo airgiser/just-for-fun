@@ -21,7 +21,7 @@
  * 
  * \return 
  */
-int bezier_spline(size_t degree, DPoint *points, 
-		size_t spline_size, DPoint *spline);
+int bezier_spline(DPoint *points, size_t degree, 
+		DPoint *spline, size_t spline_size);
 
 #endif/*CUCB_BEZIER_SPLINE_H_*/

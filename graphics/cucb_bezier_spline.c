@@ -10,7 +10,7 @@
 /*
  * de Casteljau algorithm
  */
-static int decas(size_t degree, DPoint *points, double t, DPoint *out_point)
+static int decas(DPoint *points, size_t degree, double t, DPoint *out_point)
 {
 	int i = 0;
 	int j = 0;
@@ -41,8 +41,8 @@ static int decas(size_t degree, DPoint *points, double t, DPoint *out_point)
 	return 0;
 }
 
-int bezier_spline(size_t degree, DPoint *points,
-		size_t spline_size, DPoint *spline)
+int bezier_spline(DPoint *points, size_t degree,  
+		DPoint *spline, size_t spline_size)
 {
 	/*Exception*/
 	if(spline == NULL || spline_size < degree)
@@ -58,7 +58,7 @@ int bezier_spline(size_t degree, DPoint *points,
 	for(i = 0; i < spline_size; i++)
 	{
 		/* Set spline[i] */
-		if(decas(degree, points, t, spline + i) < 0)
+		if(decas(points, degree, t, spline + i) < 0)
 		{
 			return -1;
 		}
