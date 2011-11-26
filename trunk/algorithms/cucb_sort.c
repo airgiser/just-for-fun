@@ -6,6 +6,7 @@
  */
 
 #include "cucb_sort.h"
+#include <assert.h>
 
 static void quick_sort_imp(void **data, size_t size, DataCompareFunc cmp)
 {
@@ -51,9 +52,9 @@ static void quick_sort_imp(void **data, size_t size, DataCompareFunc cmp)
 
 void quick_sort(void **array, size_t size, DataCompareFunc cmp)
 {
-	assert(array != NULL);
+	assert(array != NULL && size > 1);
 
-	if(size > 1)
+	if(array != NULL && size > 1)
 	{
 		quick_sort_imp(array, size, cmp);
 	}
