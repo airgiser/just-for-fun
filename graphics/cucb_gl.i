@@ -1,11 +1,13 @@
 /*a swig interface file*/
 %module cucb_gl
 %{
+#include "cucb_typedef.h"
 #include "cucb_point.h"
 #include "cucb_bezier_spline.h"
 #include "cucb_bspline.h"
 %}
 
+%include "cucb_typedef.h"
 %include "cucb_point.h"
 %include "cucb_bezier_spline.h"
 %include "cucb_bspline.h"

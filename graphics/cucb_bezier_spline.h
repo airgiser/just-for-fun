@@ -9,7 +9,8 @@
 #define CUCB_BEZIER_SPLINE_H_
 
 #include "cucb_point.h"
-#include <stdlib.h>
+
+CUCB_BEGIN
 
 /*
  * \brief bezier spline interpolating
@@ -23,5 +24,7 @@
  */
 int bezier_spline(DPoint *points, size_t degree, 
 		DPoint *spline, size_t spline_size);
+
+CUCB_END
 
 #endif/*CUCB_BEZIER_SPLINE_H_*/
