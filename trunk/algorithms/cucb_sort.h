@@ -8,10 +8,12 @@
 #ifndef CUCB_SORT_H_
 #define CUCB_SORT_H_
 
-#include <stdlib.h>
+#include "cucb_typedef.h"
 
-typedef int (*DataCompareFunc)(void *first, void *second);
+CUCB_BEGIN
 
 void quick_sort(void **array, size_t size, DataCompareFunc cmp);
+
+CUCB_END
 
 #endif /*CUCB_SORT_H_*/

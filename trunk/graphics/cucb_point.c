@@ -1,3 +1,10 @@
+/*
+ * File: cucb_point.c
+ * Author: airfox <airgis@163.com>
+ *
+ * Brief: 2d point
+ */
+
 #include "cucb_point.h"
 #include <assert.h>
 

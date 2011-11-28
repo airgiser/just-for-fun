@@ -34,7 +34,7 @@ static void quick_sort_test(void)
 int main(int argc, char *argv[])
 {
 	printf("Start...\n");
-	sort_test();
+	quick_sort_test();
 	printf("Complete.\n");
 
 	return 0;
