@@ -108,6 +108,14 @@ points_destroy = _cucb_gl.points_destroy
 def bezier_spline(*args):
   return _cucb_gl.bezier_spline(*args)
 bezier_spline = _cucb_gl.bezier_spline
+
+def quadratic_b_spline_interp(*args):
+  return _cucb_gl.quadratic_b_spline_interp(*args)
+quadratic_b_spline_interp = _cucb_gl.quadratic_b_spline_interp
+
+def cubic_b_spline_interp(*args):
+  return _cucb_gl.cubic_b_spline_interp(*args)
+cubic_b_spline_interp = _cucb_gl.cubic_b_spline_interp
 # This file is compatible with both classic and new-style classes.
 
 

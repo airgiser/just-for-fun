@@ -1,5 +1,6 @@
+
 #!/usr/bin/python
-#FileName: test.py
+#FileName: cucb_bezier_spline_test.py
 
 import wx
 import cucb_gl as gl
@@ -8,36 +9,31 @@ class GFrame(wx.Frame):
 	def __init__(self, parent, title):
 		super(GFrame, self).__init__(parent, title=title, size=(400,300))
 
-		wx.FutureCall(2000, self.DrawLine)
+		wx.FutureCall(2000, self.Draw)
 
 		self.Centre()
 		self.Show()
 	
-	def DrawLine(self):
+	def Draw(self):
 
-		size = 4;
+		size = 3
 		points = gl.points_create(size)
-		pt1 = gl.DPoint()
-		pt1.x = 0
-		pt1.y = 100
-		pt2 = gl.DPoint()
-		pt2.x = 100
-		pt2.y = 200
-		pt3 = gl.DPoint()
-		pt3.x = 200
-		pt3.y = 200
-		pt4 = gl.DPoint()
-		pt4.x = 300
-		pt4.y = 100
+	
+		pt = gl.DPoint()
+		pt.x = 100
+		pt.y = 100
+		gl.points_set_by_index(points, size, 0, pt)
+		pt.x = 100
+		pt.y = 200
+		gl.points_set_by_index(points, size, 1, pt)
+		pt.x = 200
+		pt.y = 200
+		gl.points_set_by_index(points, size, 2, pt)
 
 		spline_size = 9
 		spline = gl.points_create(spline_size)
-		gl.cubic_b_spline_interp(pt1, pt2, pt3, pt4, spline, spline_size)
-		
-		gl.points_set_by_index(points, size, 0, pt1)
-		gl.points_set_by_index(points, size, 1, pt2)
-		gl.points_set_by_index(points, size, 2, pt3)
-		gl.points_set_by_index(points, size, 3, pt4)
+		gl.bezier_spline(points, size, spline, spline_size) 
+
 		self.DrawPline(points, size)
 		print 'spline:'
 		self.DrawPline(spline, spline_size)
@@ -60,5 +56,5 @@ class GFrame(wx.Frame):
 if __name__ == '__main__':
 
 	app = wx.App()
-	GFrame(None, 'B-spline test')
+	GFrame(None, 'Bezier spline test')
 	app.MainLoop()
