@@ -10,6 +10,8 @@
 
 #include "cucb_point.h"
 
+CUCB_BEGIN
+
 /*
  * \brief uniform quadratic b-spline interpolating
  *
@@ -33,5 +35,7 @@ int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,
  */
 int cubic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3, DPoint p4,
 		DPoint *spline, size_t spline_size);
+
+CUCB_END
 
 #endif

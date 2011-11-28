@@ -2950,6 +2950,7 @@ static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 #define SWIG_as_voidptrptr(a) ((void)SWIG_as_voidptr(*a),(void**)(a)) 
 
 
+#include "cucb_typedef.h"
 #include "cucb_point.h"
 #include "cucb_bezier_spline.h"
 #include "cucb_bspline.h"
