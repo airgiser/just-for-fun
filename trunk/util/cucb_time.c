@@ -36,24 +36,36 @@ void time_get_microsecond(TimeMicro *micro_time)
 	struct timeval time;
 	gettimeofday(&time, NULL);
 
-	micro_time->second = time->tv_sec;
-	micro_time->microsecond = time->tv_usec;
+	micro_time->second = (int)(time.tv_sec);
+	micro_time->microsecond = (int)(time.tv_usec);
 #elif defined(WIN32)
+	LARGE_INTEGER li;
+	QueryPerformanceFrequency(&li);
+	double sec_per_tick = 1.0 / li.QuadPart;
+
+	QueryPerformanceCounter(&li);
+	double second = sec_per_tick * li.QuadPart;
+	double microsecond = second * 1000000;
+
+	micro_time->second = (int)(second);
+	micro_time->microsecond = (int)(microsecond) % 1000000;
 #endif
 	return;
 }
 
-void time_delay(TimeMicro *end_time, TimeMicro *start_time, TimeMicro *sub_time)
+int time_get_delay(TimeMicro *start_time, TimeMicro *end_time, TimeMicro *sub_time)
 {
+	/*Exception*/
 	if(start_time->second > end_time->second)
 	{
-		return;
+		return -1;
 	}
 	if(start_time->second == end_time->second && 
 			start_time->microsecond > end_time->microsecond)
 	{
-		return;
+		return -1;
 	}
+
 	sub_time->second = end_time->second - start_time->second;
 	sub_time->microsecond = end_time->microsecond - start_time->microsecond;
 	if(sub_time->microsecond < 0)
@@ -61,5 +73,6 @@ void time_delay(TimeMicro *end_time, TimeMicro *start_time, TimeMicro *sub_time)
 		sub_time->second--;
 		sub_time->microsecond += 1000000;
 	}
-	return;
+
+	return 0;
 }
