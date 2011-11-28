@@ -40,11 +40,11 @@ static void quick_sort_imp(void **data, size_t size, DataCompareFunc cmp)
 
 	if(left > 0)
 	{
-		quick_sort(data, left, cmp);
+		quick_sort_imp(data, left, cmp);
 	}
 	if(size > left + 1)
 	{
-		quick_sort(data + left + 1, size - left - 1, cmp);
+		quick_sort_imp(data + left + 1, size - left - 1, cmp);
 	}
 
 	return;

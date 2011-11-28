@@ -1,3 +1,10 @@
+/*
+ * File: cucb_bspline.c
+ * Author: airfox <airgis@163.com>
+ *
+ * Brief: quadratic b-spline and cubic b-spline
+ */
+
 #include "cucb_bspline.h"
 #include <assert.h>
 
