@@ -1,10 +1,10 @@
 #include "cucb_time.h"
 #include <stdio.h>
-#include <sys/time.h>
 #include <unistd.h>
 
 int main(int argc, char argv[])
 {
+	/*获得系统时间*/
 	TimeInfo time;
 	time_get_now(&time);
 
@@ -13,15 +13,15 @@ int main(int argc, char argv[])
 	printf("%d\n", time.weekday);
 
 	/*获得精确时间(微秒)*/
-	struct timeval start;
-	struct timeval end;
-	struct timeval sub;
+	TimeMicro start;
+	TimeMicro end;
+	TimeMicro delay;
 	
-	gettimeofday(&start, NULL);
+	time_get_microsecond(&start);
 	usleep(10000);
-	gettimeofday(&end, NULL);
-	timersub(&end, &start, &sub);
+	time_get_microsecond(&end);
+	time_get_delay(&start, &end, &delay);
 
-	printf("%d\n", (int)sub.tv_usec);
+	printf("%d:%d\n", delay.second, delay.microsecond);
 	return 0;
 }

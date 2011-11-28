@@ -34,7 +34,7 @@ typedef struct _TimeMicro
 void time_get_now(TimeInfo *cur_time);
 
 void time_get_microsecond(TimeMicro *micro_time);
-void time_delay(TimeMicro *end_time, TimeMicro *start_time, 
+int time_get_delay(TimeMicro *start_time, TimeMicro *end_time, 
 		TimeMicro *sub_time);
 
 CUCB_END
