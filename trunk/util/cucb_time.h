@@ -25,7 +25,17 @@ typedef struct _TimeInfo
 	int weekday;
 }TimeInfo;
 
+typedef struct _TimeMicro
+{
+	int second;
+	int microsecond;/*1/1000000 second*/
+}TimeMicro;
+
 void time_get_now(TimeInfo *cur_time);
+
+void time_get_microsecond(TimeMicro *micro_time);
+void time_delay(TimeMicro *end_time, TimeMicro *start_time, 
+		TimeMicro *sub_time);
 
 CUCB_END
 
