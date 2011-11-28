@@ -2,7 +2,7 @@
  * File: cucb_bezier_spline.h
  * Author: airfox <airgis@163.com>
  *
- * Brief: bezier spline algorithm
+ * Brief: bezier spline interpolateing algorithm
  */
 
 #ifndef CUCB_BEZIER_SPLINE_H_
@@ -12,14 +12,14 @@
 #include <stdlib.h>
 
 /*
- * \brief bezier样条插值
+ * \brief bezier spline interpolating
  *
- * \param degree 控制点个数 
- * \param points 控制点数组
- * \param spline_size 生成折线的点集大小
- * \param spline 生成折线的点集
+ * \param[in] points -- control points
+ * \param[in] degree -- count of control points 
+ * \param[in][out] spline -- vertices of the created spline
+ * \param[in][out] spline_size -- points count of the created spline
  * 
- * \return 
+ * \return 0 if succeed, -1 if failed 
  */
 int bezier_spline(DPoint *points, size_t degree, 
 		DPoint *spline, size_t spline_size);

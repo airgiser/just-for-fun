@@ -2952,6 +2952,7 @@ static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 
 #include "cucb_point.h"
 #include "cucb_bezier_spline.h"
+#include "cucb_bspline.h"
 
 
 SWIGINTERN int
@@ -3436,6 +3437,173 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_quadratic_b_spline_interp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DPoint arg1 ;
+  DPoint arg2 ;
+  DPoint arg3 ;
+  DPoint *arg4 = (DPoint *) 0 ;
+  size_t arg5 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:quadratic_b_spline_interp",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p__DPoint,  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "quadratic_b_spline_interp" "', argument " "1"" of type '" "DPoint""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "quadratic_b_spline_interp" "', argument " "1"" of type '" "DPoint""'");
+    } else {
+      arg1 = *((DPoint *)(argp1));
+    }
+  }
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p__DPoint,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "quadratic_b_spline_interp" "', argument " "2"" of type '" "DPoint""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "quadratic_b_spline_interp" "', argument " "2"" of type '" "DPoint""'");
+    } else {
+      arg2 = *((DPoint *)(argp2));
+    }
+  }
+  {
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p__DPoint,  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "quadratic_b_spline_interp" "', argument " "3"" of type '" "DPoint""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "quadratic_b_spline_interp" "', argument " "3"" of type '" "DPoint""'");
+    } else {
+      arg3 = *((DPoint *)(argp3));
+    }
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p__DPoint, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "quadratic_b_spline_interp" "', argument " "4"" of type '" "DPoint *""'"); 
+  }
+  arg4 = (DPoint *)(argp4);
+  ecode5 = SWIG_AsVal_size_t(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "quadratic_b_spline_interp" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = (size_t)(val5);
+  result = (int)quadratic_b_spline_interp(arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_From_int((int)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_cubic_b_spline_interp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DPoint arg1 ;
+  DPoint arg2 ;
+  DPoint arg3 ;
+  DPoint arg4 ;
+  DPoint *arg5 = (DPoint *) 0 ;
+  size_t arg6 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  size_t val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:cubic_b_spline_interp",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p__DPoint,  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "cubic_b_spline_interp" "', argument " "1"" of type '" "DPoint""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cubic_b_spline_interp" "', argument " "1"" of type '" "DPoint""'");
+    } else {
+      arg1 = *((DPoint *)(argp1));
+    }
+  }
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p__DPoint,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cubic_b_spline_interp" "', argument " "2"" of type '" "DPoint""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cubic_b_spline_interp" "', argument " "2"" of type '" "DPoint""'");
+    } else {
+      arg2 = *((DPoint *)(argp2));
+    }
+  }
+  {
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p__DPoint,  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cubic_b_spline_interp" "', argument " "3"" of type '" "DPoint""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cubic_b_spline_interp" "', argument " "3"" of type '" "DPoint""'");
+    } else {
+      arg3 = *((DPoint *)(argp3));
+    }
+  }
+  {
+    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p__DPoint,  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "cubic_b_spline_interp" "', argument " "4"" of type '" "DPoint""'"); 
+    }  
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cubic_b_spline_interp" "', argument " "4"" of type '" "DPoint""'");
+    } else {
+      arg4 = *((DPoint *)(argp4));
+    }
+  }
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p__DPoint, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "cubic_b_spline_interp" "', argument " "5"" of type '" "DPoint *""'"); 
+  }
+  arg5 = (DPoint *)(argp5);
+  ecode6 = SWIG_AsVal_size_t(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "cubic_b_spline_interp" "', argument " "6"" of type '" "size_t""'");
+  } 
+  arg6 = (size_t)(val6);
+  result = (int)cubic_b_spline_interp(arg1,arg2,arg3,arg4,arg5,arg6);
+  resultobj = SWIG_From_int((int)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"DPoint_x_set", _wrap_DPoint_x_set, METH_VARARGS, NULL},
@@ -3450,6 +3618,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"points_set_by_index", _wrap_points_set_by_index, METH_VARARGS, NULL},
 	 { (char *)"points_destroy", _wrap_points_destroy, METH_VARARGS, NULL},
 	 { (char *)"bezier_spline", _wrap_bezier_spline, METH_VARARGS, NULL},
+	 { (char *)"quadratic_b_spline_interp", _wrap_quadratic_b_spline_interp, METH_VARARGS, NULL},
+	 { (char *)"cubic_b_spline_interp", _wrap_cubic_b_spline_interp, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
