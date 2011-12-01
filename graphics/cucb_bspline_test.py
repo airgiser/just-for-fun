@@ -36,7 +36,7 @@ class GFrame(wx.Frame):
 		gl.points_set_by_index(points, size, 3, pt4)
 		#self.DrawPline(points, size)
 
-		print 'spline:'
+		print ('spline:')
 		spline_size = 9
 		spline = gl.points_create(spline_size)
 
@@ -64,8 +64,8 @@ class GFrame(wx.Frame):
 		ept = gl.DPoint()
 		for i in range(0, size):
 			gl.points_get_by_index(points, size, i, spt)
-			print spt.x
-			print spt.y
+			print (spt.x)
+			print (spt.y)
 			if i+1 < size:
 				gl.points_get_by_index(points, size, i+1, ept)
 				dc.DrawLine(spt.x, spt.y, ept.x, ept.y)

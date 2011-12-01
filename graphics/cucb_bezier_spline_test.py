@@ -35,7 +35,7 @@ class GFrame(wx.Frame):
 		gl.bezier_spline(points, size, spline, spline_size) 
 
 		self.DrawPline(points, size)
-		print 'spline:'
+		print ('spline:')
 		self.DrawPline(spline, spline_size)
 
 	def DrawPline(self, points, size):
@@ -46,8 +46,8 @@ class GFrame(wx.Frame):
 		ept = gl.DPoint()
 		for i in range(0, size):
 			gl.points_get_by_index(points, size, i, spt)
-			print spt.x
-			print spt.y
+			print (spt.x)
+			print (spt.y)
 			if i+1 < size:
 				gl.points_get_by_index(points, size, i+1, ept)
 				dc.DrawLine(spt.x, spt.y, ept.x, ept.y)
