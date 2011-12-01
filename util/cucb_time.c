@@ -42,17 +42,17 @@ void time_get_microsecond(TimeMicro *micro_time)
 	LARGE_INTEGER li;
 	double sec_per_tick;
 	double second;
-	double microsecond;
+	int microsecond;
 
 	QueryPerformanceFrequency(&li);
 	sec_per_tick = 1.0 / li.QuadPart;
 
 	QueryPerformanceCounter(&li);
 	second = sec_per_tick * li.QuadPart;
-	microsecond = second * 1000000;
+	microsecond = (second - (int)second) * 1000000;
 
 	micro_time->second = (int)(second);
-	micro_time->microsecond = (int)(microsecond) % 1000000;
+	micro_time->microsecond = microsecond;
 #endif
 	return;
 }
