@@ -8,10 +8,10 @@
 #include "cucb_time.h"
 #include <time.h>
 
-#if defined(WIN32)
-#include <windows.h>
-#elif defined(UNIX) || defined(LINUX)
+#if defined(UNIX) || defined(LINUX)
 #include <sys/time.h>
+#elif defined(WIN32)
+#include <windows.h>
 #endif
 
 void time_get_now(TimeInfo *cur_time)
@@ -40,12 +40,16 @@ void time_get_microsecond(TimeMicro *micro_time)
 	micro_time->microsecond = (int)(time.tv_usec);
 #elif defined(WIN32)
 	LARGE_INTEGER li;
+	double sec_per_tick;
+	double second;
+	double microsecond;
+
 	QueryPerformanceFrequency(&li);
-	double sec_per_tick = 1.0 / li.QuadPart;
+	sec_per_tick = 1.0 / li.QuadPart;
 
 	QueryPerformanceCounter(&li);
-	double second = sec_per_tick * li.QuadPart;
-	double microsecond = second * 1000000;
+	second = sec_per_tick * li.QuadPart;
+	microsecond = second * 1000000;
 
 	micro_time->second = (int)(second);
 	micro_time->microsecond = (int)(microsecond) % 1000000;

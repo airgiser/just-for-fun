@@ -10,16 +10,16 @@
 
 int binary_search(void **array, size_t size, void *data, DataCompareFunc cmp)
 {
+	int begin = 0;
+	int mid = 0;
+	int end = size - 1;
+	int result = 0;
+
 	assert(array != NULL && cmp != NULL);
 	if(array == NULL || cmp == NULL)
 	{
 		return -1;
 	}
-
-	int begin = 0;
-	int mid = 0;
-	int end = size - 1;
-	int result = 0;
 
 	while(begin <= end)
 	{

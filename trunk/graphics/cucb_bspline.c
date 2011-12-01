@@ -11,15 +11,16 @@
 int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,
 		DPoint *spline, size_t spline_size)
 {
-	assert(spline != NULL);
+	double t = 0.0;
+	int i = 0;
 
+	/*Exception*/
+	assert(spline != NULL);
 	if(spline == NULL || spline_size < 3)
 	{
 		return -1;
 	}
 
-	double t = 0.0;
-	int i = 0;
 	for(i = 0; i < spline_size; i++)
 	{
 		t = (double)(i) / (double)(spline_size - 1);
@@ -38,15 +39,16 @@ int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,
 int cubic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3, DPoint p4,
 		DPoint *spline, size_t spline_size)
 {
-	assert(spline != NULL);
+	double t = 0.0;
+	int i = 0;
 
+	/*Exception*/
+	assert(spline != NULL);
 	if(spline == NULL || spline_size < 3)
 	{
 		return -1;
 	}
 
-	double t = 0.0;
-	int i = 0;
 	for(i = 0; i < spline_size; i++)
 	{
 		t = (double)(i) / (double)(spline_size - 1);
