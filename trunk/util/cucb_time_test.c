@@ -25,7 +25,7 @@ int main(int argc, char argv[])
 #if defined(UNIX) || defined(LINUX)
 	usleep(10000);
 #elif defined(WIN32)
-	sleep(100);
+	Sleep(100);
 #endif
 	time_get_microsecond(&end);
 	time_get_delay(&start, &end, &delay);
