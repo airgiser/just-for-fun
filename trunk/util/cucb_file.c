@@ -13,29 +13,29 @@ void *file_open(const char *filename, FileAccessMode mode)
 {
 	switch(mode)
 	{
-		case FILE_READ_ONLY:
+		case FM_READ:
 			return fopen(filename, "r");
-		case FILE_WRITE_ONLY:
+		case FM_WRITE:
 			return fopen(filename, "w");
-		case FILE_APPEND:
+		case FM_APPEND:
 			return fopen(filename, "a");
-		case FILE_UPDATE:
+		case FM_UPDATE:
 			return fopen(filename, "r+");
-		case FILE_READ_WRITE:
+		case FM_READ_WRITE:
 			return fopen(filename, "w+");
-		case FILE_READ_APPEND:
+		case FM_READ_APPEND:
 			return fopen(filename, "a+");
-		case FILE_BINARY_READ:
+		case FM_BINARY_READ:
 			return fopen(filename, "rb");
-		case FILE_BINARY_WRITE:
+		case FM_BINARY_WRITE:
 			return fopen(filename, "wb");
-		case FILE_BINARY_APPEND:
+		case FM_BINARY_APPEND:
 			return fopen(filename, "ab");
-		case FILE_BINARY_UPDATE:
+		case FM_BINARY_UPDATE:
 			return fopen(filename, "rb+");
-		case FILE_BINARY_READ_WRITE:
+		case FM_BINARY_READ_WRITE:
 			return fopen(filename, "wb+");
-		case FILE_BINARY_READ_APPEND:
+		case FM_BINARY_READ_APPEND:
 			return fopen(filename, "ab+");
 		default:
 			return NULL;
@@ -97,7 +97,8 @@ int file_error(void *file_handle)
 
 void file_clear_error(void *file_handle)
 {
-	return clearerr((FILE*)file_handle);
+	clearerr((FILE*)file_handle);
+	return;
 }
 
 
@@ -109,9 +110,9 @@ MappedFile *file_mapping(const char *filename)
 	 * If the file does not exist, creates a new file.
 	 */
 #if defined(WINCE)
-	mapfile->file_handle = CreateFileForMappingA(filename, GENERIC_READ|GENERIC_WRITE, FILE_SHARED_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL);
+	mapfile->file_handle = CreateFileForMappingA(filename, GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 #elif defined(WIN32)
-	mapfile->file_handle = CreateFileA(filename, GENERIC_READ|GENERIC_WRITE, FILE_SHARED_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL);
+	mapfile->file_handle = CreateFileA(filename, GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 #elif defined(LINUX) || defined(UNIX)
 	mapfile->file_handle = (void *)open(filename, O_RDWR|O_CREAT);
 #endif
@@ -124,9 +125,10 @@ MappedFile *file_mapping(const char *filename)
 	/* Map the file into the address space of the process*/
 #if defined(WIN32) || defined(WINCE)
 	mapfile->mapping_handle = CreateFileMappingA(mapfile->file_handle,
-			NULL, PAGE_READ_WRITE, 0, 0, 0);
+			NULL, PAGE_READWRITE, 0, 0, 0);
 	if(mapfile->mapping_handle == NULL)
 	{
+		DWORD errID = GetLastError();
 		CloseHandle(mapfile->file_handle);
 		free(mapfile);
 		return NULL;
@@ -136,6 +138,7 @@ MappedFile *file_mapping(const char *filename)
 			FILE_MAP_ALL_ACCESS, 0, 0, 0);
 	if(mapfile->mem_addr == NULL)
 	{
+		DWORD errID = GetLastError();
 		CloseHandle(mapfile->mapping_handle);
 		CloseHandle(mapfile->file_handle);
 		free(mapfile);
@@ -165,12 +168,12 @@ void file_unmap(MappedFile *mapped_file)
 #endif
 	}
 
+#if defined(WIN32) || defined(WINCE)
 	if(mapped_file->mapping_handle != NULL)
 	{
-#if defined(WIN32) || defined(WINCE)
 		CloseHandle(mapped_file->mapping_handle);
-#endif
 	}
+#endif
 
 	if(mapped_file->file_handle != NULL)
 	{

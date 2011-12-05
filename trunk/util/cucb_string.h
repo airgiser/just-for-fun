@@ -44,13 +44,13 @@ size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum);
 size_t wchar_to_mb(char *dest, const wchar_t *src, size_t maximum);
 
 
-size_t ansi_to_unicode(wchar_t *dest, const char *src, size_t maximum);
+size_t ansi_to_wchar(wchar_t *dest, const char *src, size_t maximum);
 
-size_t unicode_to_ansi(char *dest, const wchar_t *src, size_t maximum);
+size_t wchar_to_ansi(char *dest, const wchar_t *src, size_t maximum);
 
-size_t utf8_to_unicode(wchar_t *dest, const char *src, size_t maximum);
+size_t utf8_to_wchar(wchar_t *dest, const char *src, size_t maximum);
 
-size_t unicode_to_utf8(char *dest, wchar_t *src, size_t maximum);
+size_t wchar_to_utf8(char *dest, wchar_t *src, size_t maximum);
 
 CUCB_END
 
