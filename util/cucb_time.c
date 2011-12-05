@@ -1,8 +1,8 @@
-/*
- * File: cucb_time.c
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_time.c
+ * \brief time utility
  *
- * Brief: time utility
+ * \author airfox <airgis@163.com>
  */
 
 #include "cucb_time.h"

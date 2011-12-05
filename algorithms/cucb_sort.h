@@ -1,8 +1,8 @@
-/*
- * File: cucb_sort.h
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_sort.h
+ * \brief sort algorithms
  *
- * Brief: sort algorithms
+ * \author airfox <airgis@163.com>
  */
 
 #ifndef CUCB_SORT_H_

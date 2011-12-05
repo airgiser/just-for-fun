@@ -1,8 +1,8 @@
-/*
- * File: cucb_typedef.h
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_typedef.h
+ * \brief type definition
  *
- * Brief: type definition
+ * \author airfox <airgis@163.com>
  */
 
 #ifndef CUCB_TYPEDEF_H_

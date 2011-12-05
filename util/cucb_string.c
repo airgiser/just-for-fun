@@ -1,3 +1,10 @@
+/*!
+ * \file cucb_string.c
+ * \brief string utility
+ *
+ * \author airfox <airgis@163.com>
+ */
+
 #include "cucb_string.h"
 #include <assert.h>
 

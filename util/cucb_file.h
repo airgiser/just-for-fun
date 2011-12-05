@@ -1,8 +1,8 @@
-/*
- * File: cucb_file.h
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_file.h
+ * \brief file utility
  *
- * Brief: file utility
+ * \author airfox <airgis@163.com>
  */
 
 #ifndef CUCB_FILE_H_
@@ -95,7 +95,7 @@ typedef struct _MappedFile
 	void *mem_addr;
 }MappedFile;
 
-/*
+/*!
  * \brief Open the file whose name is specified in the parameter filename.
  *
  * Example:
@@ -117,7 +117,7 @@ typedef struct _MappedFile
  */
 void *file_open(const char *filename, FileAccessMode mode);
 
-/*
+/*!
  * \brief Check the file whose name is specified by filename exists or not
  *
  * \param filename
@@ -129,7 +129,7 @@ void *file_open(const char *filename, FileAccessMode mode);
  */
 int file_exists(const char *filename);
 
-/*
+/*!
  * \brief Reposition stream position indicator
  *
  * Example:
@@ -148,7 +148,7 @@ int file_exists(const char *filename);
  */
 int file_seek(void *file_handle, long offset, FileSeekOrigin origin);
 
-/*
+/*!
  * \brief Read block of data from stream
  *
  * Example:
@@ -171,7 +171,7 @@ int file_seek(void *file_handle, long offset, FileSeekOrigin origin);
  */
 size_t file_read(void *file_handle, void *ptr, size_t size, size_t count);
 
-/*
+/*!
  * \brief Write block of data to stream
  *
  * Example:
@@ -193,7 +193,7 @@ size_t file_read(void *file_handle, void *ptr, size_t size, size_t count);
 size_t file_write(void *file_handle, 
 		const void *ptr, size_t size, size_t count);
 
-/*
+/*!
  * \brief Flush stream
  * 
  * \param file_handle
@@ -205,7 +205,7 @@ size_t file_write(void *file_handle,
  */
 int file_flush(void *file_handle);
 
-/*
+/*!
  * \brief Get current position in stream.
  *
  * Example:
@@ -222,7 +222,7 @@ int file_flush(void *file_handle);
  */
 long file_tell_pos(void *file_handle);
 
-/*
+/*!
  * \brief Get size of the file.
  *
  * \param filename
@@ -232,7 +232,7 @@ long file_tell_pos(void *file_handle);
  */
 long file_get_size(const char *filename);
 
-/*
+/*!
  * \brief Close file
  *
  * \param file_handle
@@ -244,7 +244,7 @@ long file_get_size(const char *filename);
  */
 int file_close(void *file_handle);
 
-/*
+/*!
  * \brief Check End-of-File indicator
  *
  * Example:
@@ -263,7 +263,7 @@ int file_close(void *file_handle);
  */
 int file_eof(void *file_handle);
 
-/*
+/*!
  * \brief Check error indicator
  *
  * Example:
@@ -282,7 +282,7 @@ int file_eof(void *file_handle);
  */
 int file_error(void *file_handle);
 
-/*
+/*!
  * \brief Clear error indicators. 
  * 	resets both the error and the EOF indicators of the stream.
  *
@@ -291,7 +291,7 @@ int file_error(void *file_handle);
  */
 void file_clear_error(void *file_handle);
 
-/*
+/*!
  * \brief Map a file into the address space of the process.
  *
  * \param filename
@@ -302,6 +302,12 @@ void file_clear_error(void *file_handle);
  */
 MappedFile *file_mapping(const char *filename);
 
+/*!
+ * \brief Unmap file
+ * 
+ * \param mapped_file
+ * 	Pointer to an MappedFile object that identifies the file-mappint
+ */
 void file_unmap(MappedFile *mapped_file);
 
 CUCB_END

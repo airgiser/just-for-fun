@@ -1,8 +1,8 @@
-/*
- * File: cucb_bezier_spline.c
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_bezier_spline.c
+ * \brief bezier spline interpolateing algorithm
  *
- * Brief: bezier spline algorithm
+ * \author airfox <airgis@163.com>
  */
 
 #include "cucb_bezier_spline.h"
