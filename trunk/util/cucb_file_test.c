@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	file_write(hfile, buf, sizeof(char), size);
 	file_close(hfile);
 
+	assert(file_exists(filename) == 0);
 	mfile = file_mapping(filename);
 	if(mfile != NULL)
 	{

@@ -117,7 +117,17 @@ typedef struct _MappedFile
  */
 void *file_open(const char *filename, FileAccessMode mode);
 
-int file_is_exist(const char *filename);
+/*
+ * \brief Check the file whose name is specified by filename exists or not
+ *
+ * \param filename
+ * 	The name of the file or path.
+ *
+ * \return int
+ * 	If the file exists, this function returns a zero value.
+ * 	Otherwise, it returns nonzero value.
+ */
+int file_exists(const char *filename);
 
 /*
  * \brief Reposition stream position indicator
@@ -211,6 +221,16 @@ int file_flush(void *file_handle);
  * 	is set to indicate the error.
  */
 long file_tell_pos(void *file_handle);
+
+/*
+ * \brief Get size of the file.
+ *
+ * \param filename
+ * 	C string containing the name of the file.
+ *
+ * \return long
+ */
+long file_get_size(const char *filename);
 
 /*
  * \brief Close file
