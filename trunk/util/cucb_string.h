@@ -24,7 +24,7 @@ CUCB_BEGIN
  * \param size
  * 	Maximum number of wchar_t characters to be interpreted.
  *
- * \return size_t
+ * \return
  * 	The number of characters translated, 
  * 	not including the ending null-character. 
  * 	If an invalid multibyte character is encountered,
@@ -42,7 +42,7 @@ size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum);
  * \param maximum
  * 	Maximum number of bytes to be written to dest.
  *
- * \return size_t
+ * \return
  * 	The number of bytes(not characters) translated and written to dest,
  * 	not including the ending null-character.
  * 	If an invalid multibyte character is encountered,
@@ -61,7 +61,7 @@ size_t wchar_to_mb(char *dest, const wchar_t *src, size_t maximum);
  * \maximum
  * 	Maximum number of bytes to be written to destbuf
  *
- * \return size_t
+ * \return
  * 	//The function return the number of characters converted.
  * 	In case of error, it returns (size_t)(-1). 
  */
@@ -77,7 +77,7 @@ size_t utf8_to_gb(char *destbuf, char *srcbuf, size_t maximum);
  * \maximum
  * 	Maximum number of bytes to be written to destbuf
  *
- * \return size_t
+ * \return
  * 	//The function return the number of characters converted.
  * 	In case of error, it returns (size_t)(-1). 
  */

@@ -110,7 +110,7 @@ typedef struct _MappedFile
  * \param mode
  * 	File access mode
  *
- * \return int
+ * \return 
  * 	If the file has been successfully opened, the function will return
  * 	a pointer to an object that identifies the file stream.
  * 	Otherwise, a null pointer is returned.
@@ -123,7 +123,7 @@ void *file_open(const char *filename, FileAccessMode mode);
  * \param filename
  * 	The name of the file or path.
  *
- * \return int
+ * \return
  * 	If the file exists, this function returns a zero value.
  * 	Otherwise, it returns nonzero value.
  */
@@ -142,7 +142,7 @@ int file_exists(const char *filename);
  * \param origin
  * 	Position from where offset is added.
  *
- * \return int
+ * \return
  * 	If successful, the function returns a zero value.
  * 	Otherwise, it returns nonzero value.
  */
@@ -164,7 +164,7 @@ int file_seek(void *file_handle, long offset, FileSeekOrigin origin);
  * \param count
  * 	Number of elements, each one with a size of size bytes.
  *
- * \return size_t
+ * \return
  * 	Return the total number of elements successfully read.
  * 	Otherwise, you can use either file_error or file_eof to check
  * 	whether an error happened or the End-of-File was reached.
@@ -186,7 +186,7 @@ size_t file_read(void *file_handle, void *ptr, size_t size, size_t count);
  * \param count
  * 	Number of elements, each one with a size of size bytes.
  *
- * \return size_t
+ * \return
  * 	Return the total number of elements successfully written.
  * 	If this number differs from the count parameter, it indicates an error.
  */
@@ -199,7 +199,7 @@ size_t file_write(void *file_handle,
  * \param file_handle
  * 	Pointer to an object that specifies a buffered stream.
  *
- * \return int
+ * \return
  * 	A zero value indicates success.
  * 	If an error occurs, EOF is returned and the error indicator is set.
  */
@@ -215,7 +215,7 @@ int file_flush(void *file_handle);
  * \param file_handle
  * 	Pointer to an object that identifies the stream.
  *
- * \return long int
+ * \return
  * 	On success, the current value of the position indicator is returned.
  * 	If an error occurs, -1L is returned, and the global variable errno
  * 	is set to indicate the error.
@@ -228,7 +228,7 @@ long file_tell_pos(void *file_handle);
  * \param filename
  * 	C string containing the name of the file.
  *
- * \return long
+ * \return The size of the file
  */
 long file_get_size(const char *filename);
 
@@ -238,7 +238,7 @@ long file_get_size(const char *filename);
  * \param file_handle
  * 	Pointer to an object that specifies the stream to be closed.
  * 
- * \return int
+ * \return
  * 	If the stream is successfully closed, a zero value is returned.
  * 	On failure, EOF is returned.
  */
@@ -275,7 +275,7 @@ int file_eof(void *file_handle);
  * \param file_handle
  * 	Pointer to an object that identifies the stream.
  *
- * \return int
+ * \return
  * 	If the error indicator associated with the stream was set,
  * 	the function returns a nonzero value.
  * 	Otherwise, it returns a zero value.
@@ -297,7 +297,7 @@ void file_clear_error(void *file_handle);
  * \param filename
  * 	C string containing the name of the file to be mapped.
  *
- * \return MappedFile
+ * \return
  * 	Pointer to an MappedFile object that identifies the file-mapping
  */
 MappedFile *file_mapping(const char *filename);
