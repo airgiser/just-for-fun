@@ -16,30 +16,30 @@ CUCB_BEGIN
 typedef enum _FileAccessMode
 {
 	/* Open a file for reading. The file must exist.*/
-	FILE_READ_ONLY, 
+	FM_READ, 
 
 	/* Create an empty file for writing.
 	 * If a file with the same name already exists, its content
 	 * is earsed and the file is treated as a new empty file.
 	 */
-	FILE_WRITE_ONLY,
+	FM_WRITE,
 
 	/* Append to a file.
 	 * Writing operations append data at the end of the file. 
 	 * The file is created if it does not exist.
 	 */
-	FILE_APPEND,
+	FM_APPEND,
 
 	/* Open a file for update both reading and writing. 
 	 * The file must exist.
 	 */
-	FILE_UPDATE,
+	FM_UPDATE,
 
 	/* Create an empty file for both reading and writing.
 	 * If a file with the same name already exist, its content
 	 * is earsed and the file is treated as a new empty file.
 	 */
-	FILE_READ_WRITE,
+	FM_READ_WRITE,
 
 	/* Open a file for reading and appending. All writing operations
 	 * are performed at the end of the file, protecting the 
@@ -48,32 +48,31 @@ typedef enum _FileAccessMode
 	 * operations will move it back to the end of file.
 	 * The file is created if it does not exist.
 	 */
-	FILE_READ_APPEND,
-
+	FM_READ_APPEND,
 
 	/* Open a binary file for reading. The file must exist.*/
-	FILE_BINARY_READ,
+	FM_BINARY_READ,
 
 	/* Create an empty binary file for writing. */
-	FILE_BINARY_WRITE,
+	FM_BINARY_WRITE,
 
 	/* Append to a binary file. 
 	 * The file is created if it does not exist. 
 	 */
-	FILE_BINARY_APPEND,
+	FM_BINARY_APPEND,
 
 	/* Open a binary file for update both reading and writing. 
 	 * The file must exist
 	 */
-	FILE_BINARY_UPDATE,
+	FM_BINARY_UPDATE,
 
 	/* Create an empty binary file for both reading and writing. */
-	FILE_BINARY_READ_WRITE,
+	FM_BINARY_READ_WRITE,
 
 	/* Open a binary file for reading and appending.
 	 * The file is created if it does not exist.
 	 */
-	FILE_BINARY_READ_APPEND,
+	FM_BINARY_READ_APPEND,
 }FileAccessMode;
 
 typedef enum _FileSeekOrigin
@@ -89,7 +88,9 @@ typedef enum _FileSeekOrigin
 typedef struct _MappedFile
 {
 	void *file_handle;
+#if defined(WIN32) || defined(WINCE)
 	void *mapping_handle;
+#endif
 
 	void *mem_addr;
 }MappedFile;
@@ -115,6 +116,8 @@ typedef struct _MappedFile
  * 	Otherwise, a null pointer is returned.
  */
 void *file_open(const char *filename, FileAccessMode mode);
+
+int file_is_exist(const char *filename);
 
 /*
  * \brief Reposition stream position indicator
