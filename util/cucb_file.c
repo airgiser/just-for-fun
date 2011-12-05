@@ -1,12 +1,12 @@
 #include "cucb_file.h"
 #include <stdlib.h>
+#include <sys/stat.h>
 
 #if defined(WIN32) || defined(WINCE)
 #include <windows.h>
 #elif defined(LINUX) || defined(UNIX)
 #include <sys/mman.h>
 #include <fcntl.h>
-#include <sys/stat.h>
 #endif
 
 void *file_open(const char *filename, FileAccessMode mode)
@@ -42,6 +42,11 @@ void *file_open(const char *filename, FileAccessMode mode)
 	}
 }
 
+int file_exists(const char *filename)
+{
+	return access(filename, F_OK);
+}
+
 int file_seek(void *file_handle, long offset, FileSeekOrigin origin)
 {
 	return fseek((FILE*)file_handle, offset, (int)origin);
@@ -68,8 +73,7 @@ long file_tell_pos(void *file_handle)
 	return ftell((FILE*)file_handle);
 }
 
-#if defined(LINUX) || defined(UNIX)
-static long file_get_size(const char *filename)
+long file_get_size(const char *filename)
 {
 	long len = 0;
 	struct stat fstat;
@@ -78,7 +82,6 @@ static long file_get_size(const char *filename)
 
 	return len;
 }
-#endif
 
 int file_close(void *file_handle)
 {
