@@ -1,8 +1,8 @@
-/*
- * File: cucb_point.h
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_point.h
+ * \brief 2d point
  *
- * Brief: 2d point
+ * \author airfox <airgis@163.com>
  */
 
 #ifndef CUCB_POINT_H_

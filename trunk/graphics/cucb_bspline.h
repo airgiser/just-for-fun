@@ -1,8 +1,8 @@
-/*
- * File: cucb_bspline.h
- * Author: arifox <airgis@163.com>
+/*!
+ * \file cucb_bspline.h
+ * \brief quadratic b-spline and cubic b-spline
  *
- * Brief: quadratic b-spline and cubic b-spline
+ * \author arifox <airgis@163.com>
  */
 
 #ifndef CUCB_BSPLINE_H_
@@ -12,7 +12,7 @@
 
 CUCB_BEGIN
 
-/*
+/*!
  * \brief uniform quadratic b-spline interpolating
  *
  * \param p1,p2,p3 -- control points
@@ -24,7 +24,7 @@ CUCB_BEGIN
 int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,
 		DPoint *spline, size_t spline_size);
 
-/*
+/*!
  * \brief uniform cubic b-spline interpolating
  *
  * \param p1,p2,p3,p4 -- control points

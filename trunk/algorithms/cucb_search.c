@@ -1,8 +1,8 @@
-/*
- * File: cucb_search.c
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_search.c
+ * \brief binary search algorithm
  *
- * Brief: binary search algorithm
+ * \author airfox <airgis@163.com>
  */
 
 #include "cucb_search.h"

@@ -1,3 +1,10 @@
+/*!
+ * \file cucb_string.h
+ * \brief string utility
+ *
+ * \author airfox <airgis@163.com>
+ */
+
 #ifndef CUCB_STRING_H_
 #define CUCB_STRING_H_
 
@@ -6,7 +13,7 @@
 
 CUCB_BEGIN
 
-/*
+/*!
  * \brief Convert a multibyte string to a wide-character string
  *
  * \param dest
@@ -25,7 +32,7 @@ CUCB_BEGIN
  */
 size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum);
 
-/*
+/*!
  * \brief Convert a wide-character string to a multibyte string
  *
  * \param dest
@@ -44,7 +51,7 @@ size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum);
 size_t wchar_to_mb(char *dest, const wchar_t *src, size_t maximum);
 
 #if defined(LINUX) || defined(UNIX)
-/*
+/*!
  * \brief Convert an utf-8 string to a gb2312 string.
  *
  * \param destbuf
@@ -60,7 +67,7 @@ size_t wchar_to_mb(char *dest, const wchar_t *src, size_t maximum);
  */
 size_t utf8_to_gb(char *destbuf, char *srcbuf, size_t maximum);
 
-/*
+/*!
  * \brief Convert an gb2312 string to an utf-8 string
  *
  * \param destbuf

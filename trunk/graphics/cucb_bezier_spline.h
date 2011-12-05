@@ -1,8 +1,8 @@
-/*
- * File: cucb_bezier_spline.h
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_bezier_spline.h
+ * \brief bezier spline interpolateing algorithm
  *
- * Brief: bezier spline interpolateing algorithm
+ * \author airfox <airgis@163.com>
  */
 
 #ifndef CUCB_BEZIER_SPLINE_H_
@@ -12,7 +12,7 @@
 
 CUCB_BEGIN
 
-/*
+/*!
  * \brief bezier spline interpolating
  *
  * \param[in] points -- control points

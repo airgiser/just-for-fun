@@ -1,3 +1,10 @@
+/*!
+ * \file cucb_file.c
+ * \brief file utility
+ *
+ * \author airfox <airgis@163.com>
+ */
+
 #include "cucb_file.h"
 #include <stdlib.h>
 #include <sys/stat.h>

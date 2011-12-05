@@ -1,8 +1,8 @@
-/*
- * File: cucb_bspline.c
- * Author: airfox <airgis@163.com>
+/*!
+ * \file cucb_bspline.c
+ * \brief quadratic b-spline and cubic b-spline
  *
- * Brief: quadratic b-spline and cubic b-spline
+ * \author arifox <airgis@163.com>
  */
 
 #include "cucb_bspline.h"
