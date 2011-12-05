@@ -9,6 +9,7 @@
 #define CUCB_LOCKER_H_
 
 #include "cucb_typedef.h"
+#include <stdlib.h>
 
 CUCB_BEGIN
 
