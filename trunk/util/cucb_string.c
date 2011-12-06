@@ -16,6 +16,95 @@
 #include "cucb_string.h"
 
 
+char *str_substr(char *dest, const char *src, size_t start, size_t num)
+{
+	strncpy(dest, src + start, num);
+	dest[num] = 0;
+
+	return dest;
+}
+
+size_t str_find_first_of(const char *str, int character)
+{
+	size_t pos = -1;
+	char *p = strchr(str, character);
+	if(p != NULL)
+	{
+		pos = (p - str);
+	}
+
+	return pos;
+}
+
+size_t str_find_last_of(const char *str, int character)
+{
+	size_t pos = -1;
+	char *p = strrchr(str, character);
+	if(p != NULL)
+	{
+		pos = (p - str);
+	}
+
+	return pos;
+}
+
+size_t str_find(const char *str, const char *substr)
+{
+	size_t pos = -1;
+	char *p = strstr(str, substr);
+	if(p != NULL)
+	{
+		pos = (p - str);
+	}
+
+	return pos;
+}
+
+int str_start_with(const char *source, const char *start)
+{
+	int i = 0;
+	size_t sublen = strlen(start);
+
+	assert(source != NULL && start != NULL);
+	if(sublen > strlen(source))
+	{
+		return 0;
+	}
+
+	for(i = 0; i < sublen; i++)
+	{
+		if(source[i] != start[i])
+		{
+			return 0;
+		}
+	}
+
+	return 1;
+}
+
+int str_end_with(const char *source, const char *end)
+{
+	int i = 0;
+	int sublen = strlen(end);
+	int pos = strlen(source) - sublen;
+
+	assert(source != NULL && end != NULL);
+	if(pos < 0)
+	{
+		return 0;
+	}
+
+	for(i = 0; i < sublen; i++)
+	{
+		if(source[i+pos] != end[i])
+		{
+			return 0;
+		}
+	}
+
+	return 1;
+}
+
 size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum)
 {
 	return mbstowcs(dest, src, maximum);

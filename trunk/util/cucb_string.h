@@ -14,6 +14,60 @@
 CUCB_BEGIN
 
 /*!
+ * \brief Copy the sub string of src to dest,
+ * 	which has 'num' characters and begin with the 'start' pos of src.
+ *
+ * \param dest
+ * 	Pointer to the destination array where the sub string to be stored
+ * \param src
+ * 	The C string source
+ * \param start
+ * 	The position at src where the sub string begin.
+ * \param num
+ * 	The num of characters to copyied
+ *
+ * \return
+ * 	dest is returned
+ */
+char *str_substr(char *dest, const char *src, size_t start, size_t num);
+
+/*!
+ * \brief Locate first occurrence of character in string
+ *
+ * \prarm str
+ * 	C string.
+ * \param character
+ * 	Character to be located.
+ *
+ * \return
+ * 	The pos where the first occurrence of character in str
+ * 	If failed, (size_t)(-1) is returned.
+ */
+size_t str_find_first_of(const char *str, int character);
+
+size_t str_find_last_of(const char *str, int character);
+
+/*!
+ * \brief Find substring
+ * \param str
+ * 	C string to be scanned.
+ * \param substr
+ * 	C string containing the sequence of characters to match.
+ *
+ * \return
+ * 	The start position where the first occurrence of substr in str.
+ * 	If failed, (size_t)(-1) is returned.
+ */
+size_t str_find(const char *str, const char *substr);
+
+/*
+ * If the source string start with the start string, 1 is returned.
+ * Otherwise, 0 is returned.
+ */
+int str_start_with(const char *source, const char *start);
+int str_end_with(const char *source, const char *end);
+
+/*!
  * \brief Convert a multibyte string to a wide-character string
  *
  * \param dest
