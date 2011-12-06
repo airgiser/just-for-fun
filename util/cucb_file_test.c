@@ -1,6 +1,6 @@
-#include "cucb_file.h"
 #include <string.h>
 #include <assert.h>
+#include "cucb_file.h"
 
 int main(int argc, char *argv[])
 {

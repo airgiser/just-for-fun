@@ -5,16 +5,18 @@
  * \author airfox <airgis@163.com>
  */
 
-#include "cucb_file.h"
-#include <stdlib.h>
-#include <sys/stat.h>
-
 #if defined(WIN32) || defined(WINCE)
 #include <windows.h>
 #elif defined(LINUX) || defined(UNIX)
 #include <sys/mman.h>
 #include <fcntl.h>
 #endif
+
+#include <stdlib.h>
+#include <sys/stat.h>
+
+#include "cucb_file.h"
+
 
 void *file_open(const char *filename, FileAccessMode mode)
 {

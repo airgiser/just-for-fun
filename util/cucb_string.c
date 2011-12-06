@@ -5,15 +5,16 @@
  * \author airfox <airgis@163.com>
  */
 
-#include "cucb_string.h"
-#include <assert.h>
-
 #if defined(WIN32) || defined(WINCE)
 #include <windows.h>
 #elif defined(LINUX) || defined(UNIX)
 #include <iconv.h>
 #include <string.h>
 #endif
+
+#include <assert.h>
+#include "cucb_string.h"
+
 
 size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum)
 {

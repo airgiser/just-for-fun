@@ -1,11 +1,12 @@
-#include "cucb_time.h"
-#include <stdio.h>
-
 #if defined(UNIX) || defined(LINUX)
 #include <unistd.h>
 #elif defined(WIN32)
 #include <windows.h>
 #endif
+
+#include <stdio.h>
+#include "cucb_time.h"
+
 
 int main(int argc, char argv[])
 {
