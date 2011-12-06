@@ -5,14 +5,15 @@
  * \author airfox <airgis@163.com>
  */
 
-#include "cucb_time.h"
-#include <time.h>
-
 #if defined(UNIX) || defined(LINUX)
 #include <sys/time.h>
 #elif defined(WIN32)
 #include <windows.h>
 #endif
+
+#include <time.h>
+#include "cucb_time.h"
+
 
 void time_get_now(TimeInfo *cur_time)
 {

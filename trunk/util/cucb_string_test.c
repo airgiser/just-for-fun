@@ -1,8 +1,8 @@
-#include "cucb_string.h"
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
 #include <assert.h>
+#include "cucb_string.h"
 
 
 #define MAX_LEN 255
