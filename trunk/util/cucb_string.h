@@ -47,6 +47,17 @@ size_t str_find_first_of(const char *str, int character);
 
 size_t str_find_last_of(const char *str, int character);
 
+size_t str_find_first_not_of(const char *str, int character);
+
+size_t str_find_last_not_of(const char *str, int character);
+
+/*
+ * Left trim of unwanted characters from a C string.
+ */
+char *ltrim(char *str, char junk);
+
+char *rtrim(char *str, char junk);
+
 /*!
  * \brief Find substring
  * \param str
