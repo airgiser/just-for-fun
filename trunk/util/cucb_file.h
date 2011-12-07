@@ -118,16 +118,16 @@ typedef struct _MappedFile
 void *file_open(const char *filename, FileAccessMode mode);
 
 /*!
- * \brief Check the file whose name is specified by filename exists or not
+ * \brief Check the file whose name is specified by path exists or not
  *
- * \param filename
+ * \param path
  * 	The name of the file or path.
  *
  * \return
  * 	If the file exists, this function returns a zero value.
  * 	Otherwise, it returns nonzero value.
  */
-int file_exists(const char *filename);
+int file_exists(const char *path);
 
 /*!
  * \brief Reposition stream position indicator
