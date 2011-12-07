@@ -9,15 +9,12 @@
 static void string_test(void)
 {
 	size_t pos = 0;
-	char dest[MAX_LEN];
+	char dest[MAX_LEN] = {0, };
 	char str[] = "This is a simple string";
 	char substr[] = "simple";
 	char *p = NULL;
 	char delimiters[] = " ,.;:";
 	
-	/*memset*/
-	memset(dest, 0, MAX_LEN);
-
 	/*str_start_with*/
 	/*str_end_with*/
 	/*str_find_first_of*/
@@ -59,6 +56,18 @@ static void string_test(void)
 		p = strtok(NULL, delimiters);
 	}
 
+	printf("\n");
+	return;
+}
+
+static void string_mem_test(void)
+{
+	char dest[MAX_LEN];
+	char str[] = "This is a simple string";
+
+	/*memset*/
+	memset(dest, 0, MAX_LEN);
+
 	/*memcpy example*/
 	memcpy(dest, str, strlen(str) + 1);
 	printf("%s\n", dest);
@@ -74,6 +83,17 @@ static void string_test(void)
 	printf("%s\n", dest);
 
 	printf("\n");
+	return;
+}
+static void string_trim_test(void)
+{
+	char str[] = "     This is a simple string.    ";
+	printf("original:%s\n", str);
+	printf("ltrim:%s\n", ltrim(str, ' '));
+	printf("rtrim:%s\n", rtrim(str, ' '));
+
+	printf("\n");
+	return;
 }
 
 static void string_span_test(void)
@@ -141,9 +161,12 @@ static void string_convert_test(void)
 #endif
 	printf("\n");
 }
+
 int main(int argc, char *argv[])
 {
 	string_test();
+	string_mem_test();
+	string_trim_test();
 	string_span_test();
 	string_convert_test();
 	return 0;

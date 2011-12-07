@@ -48,6 +48,43 @@ size_t str_find_last_of(const char *str, int character)
 	return pos;
 }
 
+size_t str_find_first_not_of(const char *str, int character)
+{
+	int i = 0;
+	int len = strlen(str);
+	while(i < len && str[i] == character)
+	{
+		i++;
+	}
+
+	return ((i == len) ? -1 : i);
+}
+
+size_t str_find_last_not_of(const char *str, int character)
+{
+	int i = strlen(str) - 1;
+	while(i >= 0 && str[i] == character)
+	{
+		i--;
+	}
+
+	return i;
+}
+
+char *ltrim(char *str, char junk)
+{
+	int pos = str_find_first_not_of(str, junk);
+	return str_substr(str, str, pos, strlen(str) - pos);
+}
+
+char *rtrim(char *str, char junk)
+{
+	int pos = str_find_last_not_of(str, junk);
+	str[pos + 1] = '\0';
+
+	return str;
+}
+
 size_t str_find(const char *str, const char *substr)
 {
 	size_t pos = -1;
