@@ -51,9 +51,9 @@ void *file_open(const char *filename, FileAccessMode mode)
 	}
 }
 
-int file_exists(const char *filename)
+int file_exists(const char *path)
 {
-	return access(filename, F_OK);
+	return access(path, F_OK);
 }
 
 int file_seek(void *file_handle, long offset, FileSeekOrigin origin)
