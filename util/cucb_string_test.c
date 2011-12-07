@@ -4,7 +4,7 @@
 #include <assert.h>
 #include "cucb_string.h"
 
-#define MAX_LEN 255
+#define MAX_LEN 256
 
 static void string_test(void)
 {
