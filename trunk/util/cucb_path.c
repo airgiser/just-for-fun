@@ -5,11 +5,16 @@
  * \author airfox <airgis@163.com>
  */
 
+#if defined(WIN32) || defined(WINCE)
+#include <windows.h>
+#elif defined(LINUX) || defined(UNIX)
+#include <unistd.h>
+#endif
+
 #include <assert.h>
 #include <string.h>
 #include "cucb_string.h"
 #include "cucb_path.h"
-
 
 #if defined(WIN32) || defined(WINCE)
 const char PATH_SEPARATOR = '\\';
@@ -53,7 +58,7 @@ char *path_get_pathname(char *pathname, const char *fullpath)
 	else
 	{
 		str_substr(pathname, fullpath,
-				0, pos + 1);
+				0, pos);
 	}
 
 	return pathname;
@@ -93,6 +98,17 @@ char *path_get_extension(char *extension, const char *filename)
 	}
 
 	return extension;
+}
+
+char *path_get_current_dir(char *dirname, size_t size)
+{
+	assert(dirname != NULL);
+#if defined(WIN32) || defined(WINCE)
+	GetModuleFileNameA(NULL, dirname, size);
+	return path_get_pathname(dirname, dirname);
+#elif defined(LINUX) || defined(UNIX)
+	return getcwd(dirname, size);
+#endif
 }
 
 #if defined(WIN32) || defined(WINCE)
