@@ -54,9 +54,16 @@ size_t str_find_last_not_of(const char *str, int character);
 /*
  * Left trim of unwanted characters from a C string.
  */
-char *ltrim(char *str, char junk);
+char *str_ltrim(char *str, char junk);
 
-char *rtrim(char *str, char junk);
+char *str_rtrim(char *str, char junk);
+
+/*
+ * Convert letters in str to lower case, if possible.
+ */
+char *str_to_lower(char *str);
+
+char *str_to_upper(char *str);
 
 /*!
  * \brief Find substring

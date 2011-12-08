@@ -14,7 +14,7 @@ CUCB_BEGIN
 
 #if defined(WIN32) || defined(WINCE)
 typedef HANDLE HandleType;
-typedef unsigned __stdcall (*ThreadFunc)(void *param);
+typedef unsigned (__stdcall *ThreadFunc)(void *param);
 #elif defined(LINUX) || defined(UNIX)
 typedef pthread_t HandleType;
 typedef void *(*ThreadFunc)(void *param);

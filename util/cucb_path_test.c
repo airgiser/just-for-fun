@@ -3,11 +3,16 @@
 #include "cucb_path.h"
 
 #define MAX_LEN 256
-static void path_test_linux(void)
+static void path_test(void)
 {
+#if defined(WIN32) || defined(WINCE)
+	char fullpath[] = "D:\\dev\\prj\\noname.bin";
+	char pathname[] = "D:\\dev\\prj";
+#elif defined(LINUX) || defined(UNIX)
 	char fullpath[] = "/home/airgis/dev/noname.bin";
-	char filename[] = "noname.bin";
 	char pathname[] = "/home/airgis/dev";
+#endif
+	char filename[] = "noname.bin";
 	char mainname[] = "noname";
 	char str[MAX_LEN] = {0, };
 	
@@ -49,15 +54,40 @@ static void path_test_linux(void)
 	assert(strcmp(str, mainname) == 0);
 }
 
+#include <dirent.h>
+#include <stdlib.h>
+static void scan_dir_test(const char *path)
+{
+	struct dirent **namelist;
+	int n;
+	
+	n = scandir(path, &namelist,0,alphasort);
+	if(n < 0)
+		perror("scandir");
+	else
+	{
+		while(n--)
+		{
+			if(namelist[n]->d_type == DT_DIR)
+				printf("Directory:");
+			else
+				printf("File:");
+			printf("%s\n", namelist[n]->d_name);
+			free(namelist[n]);
+		}
+		free(namelist);
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	char path[MAX_LEN] = {0, };
 	path_get_current_dir(path, MAX_LEN);
 	printf("%s\n", path);
+	assert(path_is_dir(path) == 0);
 
-#if defined(WIN32) || defined(WINCE)
-#elif defined(LINUX) || defined(UNIX)
-	path_test_linux();
-#endif
+	path_test();
+
+	scan_dir_test(".");
 	return 0;
 }
