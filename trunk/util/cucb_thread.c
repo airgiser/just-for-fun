@@ -21,7 +21,7 @@ HandleType thread_start(ThreadFunc proc, void *param)
 #if defined(WIN32) || defined(WINCE)
 	unsigned int id = 0;
 	handle = (HANDLE)_beginthreadex(NULL, 0, 
-				proc, param, 0 &id);
+				proc, param, 0, &id);
 #elif defined(LINUX) || defined(UNIX)
 	pthread_create(&handle, NULL, proc, param);
 #endif

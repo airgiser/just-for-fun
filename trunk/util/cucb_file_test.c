@@ -1,19 +1,30 @@
 #include <string.h>
 #include <assert.h>
 #include "cucb_file.h"
+#include "cucb_path.h"
 
+#define MAX_LEN 256
 int main(int argc, char *argv[])
 {
 	MappedFile *mfile = 0;
 	char *mem_buf =  0;
-	char buf[256] = "Hello!";
+
+	char buf[MAX_LEN] = "Hello!";
 	int size = strlen(buf);
-	const char *filename = "test.bin";
-	void *hfile = file_open(filename, FM_WRITE);
+	char filename[MAX_LEN] = {0, };
+	void *hfile = 0;
+	
+	path_get_current_dir(filename, MAX_LEN);
+	sprintf(filename, "%s%c%s", filename, PATH_SEPARATOR, "test.bin");
+	
+	/*create file and write some characters*/
+	hfile = file_open(filename, FM_WRITE);
 	file_write(hfile, buf, sizeof(char), size);
 	file_close(hfile);
 
 	assert(file_exists(filename) == 0);
+
+	/*mapping*/
 	mfile = file_mapping(filename);
 	if(mfile != NULL)
 	{

@@ -13,8 +13,6 @@
 #endif
 
 #include <stdlib.h>
-#include <sys/stat.h>
-
 #include "cucb_file.h"
 
 
@@ -53,7 +51,12 @@ void *file_open(const char *filename, FileAccessMode mode)
 
 int file_exists(const char *path)
 {
+#if defined(WIN32) || defined(WINCE)
+	DWORD attr = GetFileAttributesA(path);
+	return (attr != 0xFFFFFFFF) ? 0 : -1;
+#elif defined(LINUX) || defined(UNIX)
 	return access(path, F_OK);
+#endif
 }
 
 int file_seek(void *file_handle, long offset, FileSeekOrigin origin)

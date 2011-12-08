@@ -89,8 +89,8 @@ static void string_trim_test(void)
 {
 	char str[] = "     This is a simple string.    ";
 	printf("original:%s\n", str);
-	printf("ltrim:%s\n", ltrim(str, ' '));
-	printf("rtrim:%s\n", rtrim(str, ' '));
+	printf("ltrim:%s\n", str_ltrim(str, ' '));
+	printf("rtrim:%s\n", str_rtrim(str, ' '));
 
 	printf("\n");
 	return;
@@ -113,6 +113,17 @@ static void string_span_test(void)
 		p = strpbrk(p+1, keys);
 	}
 	printf("\n\n");
+}
+
+static void string_upper_lower(void)
+{
+	char str[] = "This is A simple String.";
+	printf("Original: %s\n", str);
+	printf("Upper: %s\n", str_to_upper(str));
+	printf("Lower: %s\n", str_to_lower(str));
+
+	printf("\n");
+	return;
 }
 
 static void string_convert_test(void)
@@ -168,6 +179,7 @@ int main(int argc, char *argv[])
 	string_mem_test();
 	string_trim_test();
 	string_span_test();
+	string_upper_lower();
 	string_convert_test();
 	return 0;
 }

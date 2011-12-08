@@ -71,16 +71,50 @@ size_t str_find_last_not_of(const char *str, int character)
 	return i;
 }
 
-char *ltrim(char *str, char junk)
+char *str_ltrim(char *str, char junk)
 {
 	int pos = str_find_first_not_of(str, junk);
 	return str_substr(str, str, pos, strlen(str) - pos);
 }
 
-char *rtrim(char *str, char junk)
+char *str_rtrim(char *str, char junk)
 {
 	int pos = str_find_last_not_of(str, junk);
 	str[pos + 1] = '\0';
+
+	return str;
+}
+
+char *str_to_lower(char *str)
+{
+	size_t i = 0;
+	size_t len = strlen(str);
+	assert(str != NULL);
+
+	for(i = 0; i < len; i++)
+	{
+		if(str[i] >='A' && str[i] <= 'Z')
+		{
+			str[i] += ('a' - 'A');
+		}
+	}
+
+	return str;
+}
+
+char *str_to_upper(char *str)
+{
+	size_t i = 0;
+	size_t len = strlen(str);
+	assert(str != NULL);
+
+	for(i = 0; i < len; i++)
+	{
+		if(str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] -= ('a' - 'A');
+		}
+	}
 
 	return str;
 }

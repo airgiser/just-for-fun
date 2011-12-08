@@ -7,24 +7,18 @@
 
 #if defined(WIN32) || defined(WINCE)
 #include <windows.h>
+#include <direct.h>
 #elif defined(LINUX) || defined(UNIX)
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <dirent.h>
 #endif
 
 #include <assert.h>
 #include <string.h>
 #include "cucb_string.h"
 #include "cucb_path.h"
-
-#if defined(WIN32) || defined(WINCE)
-const char PATH_SEPARATOR = '\\';
-#elif defined(LINUX) || defined(UNIX)
-const char PATH_SEPARATOR = '/';
-/*MAC*/
-/*const char PATH_SEPARATOR = ':';*/
-#else
-#error 'Only Windows, MAC, Unix and Linux are supported'
-#endif
 
 char *path_get_filename(char *filename, const char *fullpath)
 {
@@ -108,6 +102,43 @@ char *path_get_current_dir(char *dirname, size_t size)
 	return path_get_pathname(dirname, dirname);
 #elif defined(LINUX) || defined(UNIX)
 	return getcwd(dirname, size);
+#endif
+}
+
+int path_is_dir(const char *path)
+{
+#if defined(WIN32) || defined(WINCE)
+	DWORD attr = GetFileAttributesA(path);
+	if(attr == 0xFFFFFFFF)
+	{
+		return -1;
+	}
+	else if(attr & FILE_ATTRIBUTE_DIRECTORY)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+#elif defined(LINUX) || defined(UNIX)
+	struct stat st;
+
+	if(access(path, F_OK) != 0)
+	{
+		return -1;
+	}
+
+	/*Input 'man 2 stat' to get mor information about stat*/
+	stat(path, &st);
+	if(S_ISDIR(st.st_mode))
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
 #endif
 }
 
