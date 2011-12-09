@@ -16,11 +16,22 @@
 #include "cucb_string.h"
 
 
+/* Buffer overfolw if the length of buffer dest 
+ * is not long enough(because of strncpy used).
+ */
 char *str_substr(char *dest, const char *src, size_t start, size_t num)
 {
-	strncpy(dest, src + start, num);
-	dest[num] = 0;
+	assert(dest != NULL && src != NULL);
+	if((start + num) > strlen(src))
+	{
+		assert(0);
+		return NULL;
+	}
 
+	strncpy(dest, src + start, num);
+	assert(dest[num] == '\0');
+
+	dest[num] = '\0';
 	return dest;
 }
 
@@ -73,14 +84,37 @@ size_t str_find_last_not_of(const char *str, int character)
 
 char *str_ltrim(char *str, char junk)
 {
-	int pos = str_find_first_not_of(str, junk);
-	return str_substr(str, str, pos, strlen(str) - pos);
+	size_t i = 0;
+	size_t len = strlen(str);
+	size_t pos = str_find_first_not_of(str, junk);
+	
+	if(pos == -1)
+	{
+		memset(str, 0, len);
+	}
+
+	if(pos != 0)
+	{
+		for(i = 0; i < len - pos; i++)
+		{
+			str[i] = str[pos + i];
+		}
+		memset(str + len - pos, 0, pos);
+	}
+	
+	return str;
 }
 
 char *str_rtrim(char *str, char junk)
 {
-	int pos = str_find_last_not_of(str, junk);
-	str[pos + 1] = '\0';
+	size_t len = strlen(str);
+	size_t pos = str_find_last_not_of(str, junk);
+
+	if(pos == -1)
+	{
+		memset(str, 0, len);
+	}
+	memset(str + pos + 1, 0, len - pos - 1); 
 
 	return str;
 }

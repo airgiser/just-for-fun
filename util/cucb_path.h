@@ -24,6 +24,8 @@ CUCB_BEGIN
 
 /*
  * Get file name from an absolute file path.
+ * Beware of buffer overflow, if the length of buffer filename
+ * is not long enough. 
  */
 char *path_get_filename(char *filename, const char *fullpath);
 char *path_get_pathname(char *pathname, const char *fullpath);
@@ -34,6 +36,11 @@ char *path_get_extension(char *extension, const char *filename);
  * Get current working directory
  */
 char *path_get_current_dir(char *dirname, size_t size);
+
+/*
+ * This function scans the directory, all entries collected in namelist.
+ */
+int path_scan_directory(const char *dirname, char ***namelist);
 
 /*
  * If the path is a File, 0 is returned.

@@ -16,6 +16,8 @@ CUCB_BEGIN
 /*!
  * \brief Copy the sub string of src to dest,
  * 	which has 'num' characters and begin with the 'start' pos of src.
+ * 	Beware of buffer overfolw if the length of buffer dest 
+ * 	is not long enough.
  *
  * \param dest
  * 	Pointer to the destination array where the sub string to be stored

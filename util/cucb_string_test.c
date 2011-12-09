@@ -85,6 +85,7 @@ static void string_mem_test(void)
 	printf("\n");
 	return;
 }
+
 static void string_trim_test(void)
 {
 	char str[] = "     This is a simple string.    ";

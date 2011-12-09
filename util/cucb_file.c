@@ -13,6 +13,7 @@
 #endif
 
 #include <stdlib.h>
+#include <sys/stat.h>
 #include "cucb_file.h"
 
 
