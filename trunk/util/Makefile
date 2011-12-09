@@ -11,3 +11,5 @@ clean:
 	rm -f path_test
 	rm -f str_test
 	rm -f locker_test
+	rm -f test.bin
+	rm -f *~
