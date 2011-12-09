@@ -21,6 +21,7 @@ CUCB_BEGIN
  *
  * \param dest
  * 	Pointer to the destination array where the sub string to be stored
+ * 	at least (num + 1) bytes.
  * \param src
  * 	The C string source
  * \param start

@@ -69,31 +69,6 @@ static void scan_dir_test(const char *path)
 	free(namelist);
 }
 
-#if 0
-static void scan_dir_test(const char *path)
-{
-	struct dirent **namelist;
-	int n;
-	
-	n = scandir(path, &namelist,0,alphasort);
-	if(n < 0)
-		perror("scandir");
-	else
-	{
-		while(n--)
-		{
-			if(namelist[n]->d_type == DT_DIR)
-				printf("Directory:");
-			else
-				printf("File:");
-			printf("%s\n", namelist[n]->d_name);
-			free(namelist[n]);
-		}
-		free(namelist);
-	}
-}
-#endif
-
 int main(int argc, char *argv[])
 {
 	char path[MAX_LEN] = {0, };

@@ -29,7 +29,6 @@ char *str_substr(char *dest, const char *src, size_t start, size_t num)
 	}
 
 	strncpy(dest, src + start, num);
-	assert(dest[num] == '\0');
 
 	dest[num] = '\0';
 	return dest;

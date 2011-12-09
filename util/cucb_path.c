@@ -115,7 +115,7 @@ int path_scan_directory(const char *dirname, char ***namelist)
 	char path[MAX_PATH];
 	size_t len = 0;
 	size_t n = 0;
-	WIN32_FIND_DATA fd;
+	WIN32_FIND_DATAA fd;
 	HANDLE hfind = INVALID_HANDLE_VALUE;
 
 	/*Initialize path*/
@@ -129,7 +129,7 @@ int path_scan_directory(const char *dirname, char ***namelist)
 	strcat(path, "*");
 	
 	/*Find first*/
-	hfind = FindFirstFile(path, &fd);
+	hfind = FindFirstFileA(path, &fd);
 	if(hfind == INVALID_HANDLE_VALUE)
 	{
 		FindClose(hfind);
@@ -144,16 +144,20 @@ int path_scan_directory(const char *dirname, char ***namelist)
 		{
 			//continue;
 		}
+		if(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+		{
+			//
+		}
 
 		n++;
 		*namelist = (char **)realloc(*namelist, sizeof(char *) * n);
 
-		len = strlen(fd.cFilename);
+		len = strlen(fd.cFileName);
 		(*namelist)[n - 1] = (char *)malloc(len + 1);
 		memset((*namelist)[n - 1], 0, len + 1);
-		strncpy((*namelist)[n - 1], fd.cFilename, len);
+		strncpy((*namelist)[n - 1], fd.cFileName, len);
 
-	}while(FindNextFile(hfind, &fd))
+	}while(FindNextFileA(hfind, &fd))
 
 	FindClose(hfind);
 	return n;
