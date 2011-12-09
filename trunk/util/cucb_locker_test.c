@@ -19,7 +19,11 @@ typedef struct _SimpleData
 	Locker *locker;
 }SimpleData;
 
+#if defined(WIN32) || defined(WINCE)
+unsigned long WINAPI thread_func(void *param)
+#elif defined(LINUX) || defined(UNIX)
 void *thread_func(void *param)
+#endif
 {
 	SimpleData *pdata = (SimpleData *)param;
 	while(1)
@@ -44,18 +48,21 @@ void *thread_func(void *param)
 		locker_unlock(pdata->locker);
 	}
 
-	return NULL;
+	return 0;
 }
 
 int main(int argc, char *argv[])
 {
+	HandleType h_one;
+	HandleType h_two;
+
 	SimpleData data;
 	data.i = 0;
 	memset(data.str, 0, MAX + 1);
 	data.locker = locker_normal_create();
 
-	HandleType h_one = thread_start(thread_func, &data);
-	HandleType h_two = thread_start(thread_func, &data);
+	h_one = thread_start(thread_func, &data);
+	h_two = thread_start(thread_func, &data);
 	thread_wait(h_one);
 	thread_wait(h_two);
 
