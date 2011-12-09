@@ -1,6 +1,6 @@
 #if defined(UNIX) || defined(LINUX)
 #include <unistd.h>
-#elif defined(WIN32)
+#elif defined(WIN32) || defined(WINCE)
 #include <windows.h>
 #endif
 
@@ -26,7 +26,7 @@ int main(int argc, char argv[])
 #if defined(UNIX) || defined(LINUX)
 	usleep(10000);
 #elif defined(WIN32)
-	Sleep(100);
+	Sleep(10);
 #endif
 	time_get_microsecond(&end);
 	time_get_delay(&start, &end, &delay);

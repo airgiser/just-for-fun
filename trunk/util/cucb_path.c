@@ -157,7 +157,7 @@ int path_scan_directory(const char *dirname, char ***namelist)
 		memset((*namelist)[n - 1], 0, len + 1);
 		strncpy((*namelist)[n - 1], fd.cFileName, len);
 
-	}while(FindNextFileA(hfind, &fd))
+	}while(FindNextFileA(hfind, &fd));
 
 	FindClose(hfind);
 	return n;
