@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include "cucb_path.h"
 
@@ -54,8 +55,21 @@ static void path_test(void)
 	assert(strcmp(str, mainname) == 0);
 }
 
-#include <dirent.h>
-#include <stdlib.h>
+static void scan_dir_test(const char *path)
+{
+	char **namelist = 0;
+	int n = path_scan_directory(path, &namelist);
+
+	while(n--)
+	{
+		printf("%s\n", namelist[n]);
+		free(namelist[n]);
+	}
+
+	free(namelist);
+}
+
+#if 0
 static void scan_dir_test(const char *path)
 {
 	struct dirent **namelist;
@@ -78,6 +92,7 @@ static void scan_dir_test(const char *path)
 		free(namelist);
 	}
 }
+#endif
 
 int main(int argc, char *argv[])
 {

@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
 	file_seek(hfile, 0, FILE_SEEK_END);
 	assert(size == file_tell_pos(hfile));
 	file_seek(hfile, 0, FILE_SEEK_BEGIN);
+	assert(size == file_get_size(filename));
 
 	file_read(hfile, buf, sizeof(char), size);
 	assert(strcmp(buf, "Cello!") == 0);

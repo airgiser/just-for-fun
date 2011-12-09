@@ -15,11 +15,15 @@
 #include <dirent.h>
 #endif
 
+#include <stdlib.h>
 #include <assert.h>
 #include <string.h>
 #include "cucb_string.h"
 #include "cucb_path.h"
 
+/* Beware of buffer overflow, if the length of buffer filename
+ * is not long enough(because of strncpy or str_substr used). 
+ */
 char *path_get_filename(char *filename, const char *fullpath)
 {
 	size_t pos = 0;
@@ -68,7 +72,7 @@ char *path_get_mainname(char *mainname, const char *filename)
 	pos = str_find_last_of(mainname, '.');
 	if(pos != -1)
 	{
-		str_substr(mainname, mainname, 0, pos);
+		memset(mainname + pos, 0, strlen(mainname) - pos);
 	}
 
 	return mainname;
@@ -102,6 +106,82 @@ char *path_get_current_dir(char *dirname, size_t size)
 	return path_get_pathname(dirname, dirname);
 #elif defined(LINUX) || defined(UNIX)
 	return getcwd(dirname, size);
+#endif
+}
+
+int path_scan_directory(const char *dirname, char ***namelist)
+{
+#if defined(WIN32) || defined(WINCE)
+	char path[MAX_PATH];
+	size_t len = 0;
+	size_t n = 0;
+	WIN32_FIND_DATA fd;
+	HANDLE hfind = INVALID_HANDLE_VALUE;
+
+	/*Initialize path*/
+	len = strlen(dirname);
+	strncpy(path, dirname, MAX_PATH);
+	assert(len + 3 < MAX_PATH);
+	if(path[len - 1] != '\\')
+	{
+		strcat(path, "\\");
+	}
+	strcat(path, "*");
+	
+	/*Find first*/
+	hfind = FindFirstFile(path, &fd);
+	if(hfind == INVALID_HANDLE_VALUE)
+	{
+		FindClose(hfind);
+		return -1;
+	}
+
+	/*Loop all files*/
+	do
+	{
+		if(strcmp(fd.cFileName, ".") == 0 ||
+				strcmp(fd.cFileName, "..") == 0)
+		{
+			//continue;
+		}
+
+		n++;
+		*namelist = (char **)realloc(*namelist, sizeof(char *) * n);
+
+		len = strlen(fd.cFilename);
+		(*namelist)[n - 1] = (char *)malloc(len + 1);
+		memset((*namelist)[n - 1], 0, len + 1);
+		strncpy((*namelist)[n - 1], fd.cFilename, len);
+
+	}while(FindNextFile(hfind, &fd))
+
+	FindClose(hfind);
+	return n;
+
+#elif defined(LINUX) || defined(UNIX)
+	int len = 0;
+	struct dirent **dirlist;
+
+	int num = scandir(dirname, &dirlist,0,alphasort);
+	int i = num;
+	if(num < 0)
+	{
+		return -1;
+	}
+
+	*namelist = (char **)malloc(sizeof(char *) * num);
+	while(i--)
+	{
+		len = strlen(dirlist[i]->d_name);
+		(*namelist)[i] = (char *)malloc(len + 1);
+		memset((*namelist)[i], 0, len + 1);
+		strncpy((*namelist)[i], dirlist[i]->d_name, len);
+
+		free(dirlist[i]);
+	}
+	free(dirlist);
+
+	return num;
 #endif
 }
 
