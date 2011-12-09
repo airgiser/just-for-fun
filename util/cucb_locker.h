@@ -10,6 +10,7 @@
 
 #include "cucb_typedef.h"
 #include <stdlib.h>
+#include <assert.h>
 
 CUCB_BEGIN
 
