@@ -1,16 +1,18 @@
 /*!
- * \file cucb_bezier_spline.h
+ * Copyright (c) airfox 2011
+ *
+ * \file bezier_spline.h
  * \brief bezier spline interpolateing algorithm
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_BEZIER_SPLINE_H_
-#define CUCB_BEZIER_SPLINE_H_
+#ifndef UCB_BEZIER_SPLINE_H_
+#define UCB_BEZIER_SPLINE_H_
 
-#include "cucb_point.h"
+#include "point.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
 /*!
  * \brief bezier spline interpolating
@@ -25,6 +27,6 @@ CUCB_BEGIN
 int bezier_spline(DPoint *points, size_t degree, 
 		DPoint *spline, size_t spline_size);
 
-CUCB_END
+UCB_END
 
-#endif/*CUCB_BEZIER_SPLINE_H_*/
+#endif/*UCB_BEZIER_SPLINE_H_*/

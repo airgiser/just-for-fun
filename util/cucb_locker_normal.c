@@ -1,4 +1,6 @@
 /*!
+ * Copyright (c) airfox 2011
+ *
  * \file cucb_locker_normal.c
  * \brief a normal locker for win32 or linux platform
  *

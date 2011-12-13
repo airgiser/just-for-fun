@@ -1,19 +1,21 @@
 /*!
- * \file cucb_search.h
+ * Copyright (c) airfox 2011
+ *
+ * \file search.h
  * \brief binary search algorithm
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_SEARCH_H_
-#define CUCB_SEARCH_H_
+#ifndef UCB_SEARCH_H_
+#define UCB_SEARCH_H_
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
 int binary_search(void **array, size_t size, void *data, DataCompareFunc cmp);
 
-CUCB_END
+UCB_END
 
-#endif
+#endif/*UCB_SEARCH_H_*/

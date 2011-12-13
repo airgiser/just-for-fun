@@ -1,11 +1,13 @@
 /*!
- * \file cucb_point.c
+ * Copyright (c) airfox 2011
+ *
+ * \file point.c
  * \brief 2d point
  *
  * \author airfox <airgis@163.com>
  */
 
-#include "cucb_point.h"
+#include "point.h"
 #include <assert.h>
 
 DPoint *points_create(size_t size)
