@@ -1,16 +1,18 @@
 /*!
- * \file cucb_bspline.h
+ * Copyright (c) airfox 2011
+ *
+ * \file bspline.h
  * \brief quadratic b-spline and cubic b-spline
  *
  * \author arifox <airgis@163.com>
  */
 
-#ifndef CUCB_BSPLINE_H_
-#define CUCB_BSPLINE_H_
+#ifndef UCB_BSPLINE_H_
+#define UCB_BSPLINE_H_
 
-#include "cucb_point.h"
+#include "point.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
 /*!
  * \brief uniform quadratic b-spline interpolating
@@ -36,6 +38,6 @@ int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,
 int cubic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3, DPoint p4,
 		DPoint *spline, size_t spline_size);
 
-CUCB_END
+UCB_END
 
-#endif
+#endif/*UCB_BSPLINE_H_*/

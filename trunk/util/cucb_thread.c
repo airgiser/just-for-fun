@@ -1,4 +1,6 @@
 /*!
+ * Copyright (c) airfox 2011
+ *
  * \file cucb_thread.c
  * \brief simple thread interface
  *

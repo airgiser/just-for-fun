@@ -1,4 +1,6 @@
 /*!
+ * Copyright (c) airfox 2011
+ *
  * \file cucb_locker.h
  * \brief interface definition of a locker
  *

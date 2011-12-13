@@ -1,11 +1,13 @@
 /*
- * \file cucb_sort.c
+ * Copyright (c) airfox 2011
+ *
+ * \file sort.c
  * \brief sort algorithms
  *
  * \author airfox <airgis@163.com>
  */
 
-#include "cucb_sort.h"
+#include "sort.h"
 #include <assert.h>
 
 static void quick_sort_imp(void **data, size_t size, DataCompareFunc cmp)

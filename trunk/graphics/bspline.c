@@ -1,11 +1,13 @@
 /*!
- * \file cucb_bspline.c
+ * Copyright (c) airfox 2011
+ *
+ * \file bspline.c
  * \brief quadratic b-spline and cubic b-spline
  *
  * \author arifox <airgis@163.com>
  */
 
-#include "cucb_bspline.h"
+#include "bspline.h"
 #include <assert.h>
 
 int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,

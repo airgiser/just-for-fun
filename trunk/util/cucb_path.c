@@ -1,4 +1,6 @@
 /*!
+ * Copyright (c) airfox 2011
+ *
  * \file cucb_path.c
  * \brief path utility
  *

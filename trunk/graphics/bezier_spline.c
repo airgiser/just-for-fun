@@ -1,11 +1,13 @@
 /*!
- * \file cucb_bezier_spline.c
+ * Copyright (c) airfox 2011
+ *
+ * \file bezier_spline.c
  * \brief bezier spline interpolateing algorithm
  *
  * \author airfox <airgis@163.com>
  */
 
-#include "cucb_bezier_spline.h"
+#include "bezier_spline.h"
 
 /*
  * de Casteljau algorithm
