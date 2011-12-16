@@ -77,6 +77,8 @@ static void init_demo_three()
 	cout<<src<<endl;
 	cout<<dest<<endl;
 
+	string chararray(20, 'N');
+	cout<<chararray<<endl;
 	return;
 }
 

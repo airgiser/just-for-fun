@@ -1,7 +1,9 @@
 all:
-	g++ -g stringstorage.cpp -o storage_test
-	g++ -g stringinit.cpp -o init_test
+	g++ -g stringstorage.cpp -o storage_demo
+	g++ -g stringinit.cpp -o init_demo
+	g++ -g stringoper.cpp -o oper_demo
+	g++ -g stringsearch.cpp -o search_demo
 
 clean:
-	rm -f *test
+	rm -f *demo
 	rm -f *~
