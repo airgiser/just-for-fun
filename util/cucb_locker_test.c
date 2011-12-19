@@ -13,10 +13,10 @@
 #define MAX 500
 typedef struct _SimpleData
 {
-	int i;
-	char str[MAX + 1];
+    int i;
+    char str[MAX + 1];
 
-	Locker *locker;
+    Locker *locker;
 }SimpleData;
 
 #if defined(WIN32) || defined(WINCE)
@@ -25,49 +25,49 @@ unsigned long WINAPI thread_func(void *param)
 void *thread_func(void *param)
 #endif
 {
-	SimpleData *pdata = (SimpleData *)param;
-	while(1)
-	{
-		locker_lock(pdata->locker);
+    SimpleData *pdata = (SimpleData *)param;
+    while(1)
+    {
+        locker_lock(pdata->locker);
 
-		if(pdata->i >= MAX)
-		{
-			locker_unlock(pdata->locker);
-			break;
-		}
+        if(pdata->i >= MAX)
+        {
+            locker_unlock(pdata->locker);
+            break;
+        }
 #if defined(WIN32) || defined(WINCE)
-		Sleep(1);
+        Sleep(1);
 #elif defined(LINUX) || defined(UNIX)
-		usleep(1000);
+        usleep(1000);
 #endif
-		(pdata->str)[pdata->i] = 'O';
-		assert(strlen(pdata->str) == pdata->i + 1);
-		(pdata->i)++;
-		printf("%d\n%s\n", pdata->i, pdata->str);
+        (pdata->str)[pdata->i] = 'O';
+        assert(strlen(pdata->str) == pdata->i + 1);
+        (pdata->i)++;
+        printf("%d\n%s\n", pdata->i, pdata->str);
 
-		locker_unlock(pdata->locker);
-	}
+        locker_unlock(pdata->locker);
+    }
 
-	return 0;
+    return 0;
 }
 
 int main(int argc, char *argv[])
 {
-	HandleType h_one;
-	HandleType h_two;
+    HandleType h_one;
+    HandleType h_two;
 
-	SimpleData data;
-	data.i = 0;
-	memset(data.str, 0, MAX + 1);
-	data.locker = locker_normal_create();
+    SimpleData data;
+    data.i = 0;
+    memset(data.str, 0, MAX + 1);
+    data.locker = locker_normal_create();
 
-	h_one = thread_start(thread_func, &data);
-	h_two = thread_start(thread_func, &data);
-	thread_wait(h_one);
-	thread_wait(h_two);
+    h_one = thread_start(thread_func, &data);
+    h_two = thread_start(thread_func, &data);
+    thread_wait(h_one);
+    thread_wait(h_two);
 
-	locker_destroy(data.locker);
-	printf("Complete.\n");
+    locker_destroy(data.locker);
+    printf("Complete.\n");
 
-	return 0;
+    return 0;
 }

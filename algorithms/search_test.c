@@ -4,32 +4,32 @@
 
 int cmp_int(void *first, void *second)
 {
-	return (int)first - (int)second;
+    return (int)first - (int)second;
 }
 
 static void binary_search_test(size_t size)
 {
-	void **array = malloc(sizeof(void *) * size);
-	int i = 0;
-	for(i = 0; i < size; i++)
-	{
-		array[i] = (void *)i;
-	}
+    void **array = malloc(sizeof(void *) * size);
+    int i = 0;
+    for(i = 0; i < size; i++)
+    {
+        array[i] = (void *)i;
+    }
 
-	for(i = 0; i < size; i++)
-	{
-		assert(binary_search(array, size, (void *)i, cmp_int) == i);
-	}
+    for(i = 0; i < size; i++)
+    {
+        assert(binary_search(array, size, (void *)i, cmp_int) == i);
+    }
 
-	free(array);
+    free(array);
 
-	return;
+    return;
 }
 
 int main(int argc, char *argv[])
 {
-	printf("Start testing...\n");
-	binary_search_test(1000);
-	printf("Complete.\n");
-	return 0;
+    printf("Start testing...\n");
+    binary_search_test(1000);
+    printf("Complete.\n");
+    return 0;
 }

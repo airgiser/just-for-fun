@@ -8,6 +8,6 @@ using namespace std;
 
 int main()
 {
-	system("./numconv -h");
-	return 0;
+    system("./numconv -h");
+    return 0;
 }

@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) airfox 2011
+ e Copyright (c) airfox 2011
  *
  * \file cucb_typedef.h
  * \brief type definition

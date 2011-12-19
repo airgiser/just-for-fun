@@ -12,36 +12,36 @@
 
 DPoint *points_create(size_t size)
 {
-	DPoint *pts = NULL;
-	if(size > 0)
-	{
-		pts = (DPoint *)malloc(sizeof(DPoint) * size);
-		assert(pts != NULL);
-	}
-	return pts;
+    DPoint *pts = NULL;
+    if(size > 0)
+    {
+        pts = (DPoint *)malloc(sizeof(DPoint) * size);
+        assert(pts != NULL);
+    }
+    return pts;
 }
 
 void points_get_by_index(DPoint *pts, size_t size, size_t index, DPoint *pt)
 {
-	if(pts != NULL && index < size)
-	{
-		*pt = *(pts + index);
-	}
+    if(pts != NULL && index < size)
+    {
+        *pt = *(pts + index);
+    }
 
-	return;
+    return;
 }
 
 void points_set_by_index(DPoint *pts, size_t size, size_t index, DPoint *pt)
 {
-	if(pts != NULL && index < size && pt != NULL)
-	{
-		*(pts + index) = *pt;
-	}
+    if(pts != NULL && index < size && pt != NULL)
+    {
+        *(pts + index) = *pt;
+    }
 
-	return;
+    return;
 }
 
 void points_destroy(DPoint *pts)
 {
-	free(pts);
+    free(pts);
 }

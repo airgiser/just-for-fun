@@ -19,6 +19,6 @@ zip_command = "zip -qr '%s' %s" % (target, ' '.join(source))
 
 # Run the backup
 if os.system(zip_command) == 0:
-	print 'Successful backup to', target
+    print 'Successful backup to', target
 else:
-	print 'Backup Failed'
+    print 'Backup Failed'

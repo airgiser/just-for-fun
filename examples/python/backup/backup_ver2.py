@@ -19,8 +19,8 @@ now = time.strftime('%H%M%S')
 
 # Create the subdirectory if it isn't already there
 if not os.path.exists(today):
-	os.mkdir(today) #make directory
-	print 'Successfully created directory', today
+    os.mkdir(today) #make directory
+    print 'Successfully created directory', today
 
 # The name of the zip file
 target = today + os.sep + now + '.zip'
@@ -30,6 +30,6 @@ zip_command = "zip -qr '%s' %s" % (target, ' '.join(source))
 
 # Run the backup
 if os.system(zip_command) == 0:
-	print 'Successful backup to', target
+    print 'Successful backup to', target
 else:
-	print 'Backup Failed'
+    print 'Backup Failed'

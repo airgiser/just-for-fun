@@ -19,22 +19,22 @@ now = time.strftime('%H%M%S')
 
 # Create the subdirectory if it isn't already there
 if not os.path.exists(today):
-	os.mkdir(today) #make directory
-	print 'Successfully created directory', today
+    os.mkdir(today) #make directory
+    print 'Successfully created directory', today
 
 # Take a comment from the user to create the name of the zip file
 comment = raw_input('Enter a comment --> ')
 if len(comment) == 0: # check if the comment was entered
-	target = today + os.sep + now + '.zip'
+    target = today + os.sep + now + '.zip'
 else:
-	target = today + os.sep + now + '_' + \
-		comment.replace(' ', '_') + '.zip'
+    target = today + os.sep + now + '_' + \
+        comment.replace(' ', '_') + '.zip'
 
 # 5. We use the zip command to put the files in a zip archive
 zip_command = "zip -qr '%s' %s" % (target, ' '.join(source))
 
 # Run the backup
 if os.system(zip_command) == 0:
-	print 'Successful backup to', target
+    print 'Successful backup to', target
 else:
-	print 'Backup Failed'
+    print 'Backup Failed'

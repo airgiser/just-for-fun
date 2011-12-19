@@ -24,7 +24,7 @@ UCB_BEGIN
  * \return 0 if succeed, -1 if failed
  */
 int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,
-		DPoint *spline, size_t spline_size);
+        DPoint *spline, size_t spline_size);
 
 /*!
  * \brief uniform cubic b-spline interpolating
@@ -36,7 +36,7 @@ int quadratic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3,
  * \return 0 if succeed, -1 if failed
  */
 int cubic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3, DPoint p4,
-		DPoint *spline, size_t spline_size);
+        DPoint *spline, size_t spline_size);
 
 UCB_END
 
