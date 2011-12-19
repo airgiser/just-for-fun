@@ -16,11 +16,11 @@ del addrbook['Spammer']
 print '\nThere are %d contact in the address book\n' % len(addrbook)
 
 for name, address in addrbook.items():
-	print 'Contact %s at %s' % (name, address)
+    print 'Contact %s at %s' % (name, address)
 
 print ''
 for item in addrbook:
-	print '[%s, %s]' % (item, addrbook[item])
+    print '[%s, %s]' % (item, addrbook[item])
 
 if 'airgis' in addrbook:
-	print "\nairgis's address is %s" % addrbook['airgis']
+    print "\nairgis's address is %s" % addrbook['airgis']

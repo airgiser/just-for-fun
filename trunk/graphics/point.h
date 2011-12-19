@@ -16,8 +16,8 @@ UCB_BEGIN
 
 typedef struct _DPoint
 {
-	double x;
-	double y;
+    double x;
+    double y;
 }DPoint;
 
 DPoint *points_create(size_t size);

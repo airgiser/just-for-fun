@@ -25,47 +25,47 @@ typedef void (*LockerDestroyFunc)(Locker *thiz);
 
 typedef struct _Locker
 {
-	LockerLockFunc lock;
-	LockerUnlockFunc unlock;
-	LockerDestroyFunc destroy;
+    LockerLockFunc lock;
+    LockerUnlockFunc unlock;
+    LockerDestroyFunc destroy;
 
-	char priv[0];
+    char priv[0];
 }Locker;
 
 static inline int locker_lock(Locker *thiz)
 {
-	assert(thiz != NULL && thiz->lock != NULL);
+    assert(thiz != NULL && thiz->lock != NULL);
 
-	if(thiz != NULL && thiz->lock != NULL)
-	{
-		return thiz->lock(thiz);
-	}
+    if(thiz != NULL && thiz->lock != NULL)
+    {
+        return thiz->lock(thiz);
+    }
 
-	return -1;
+    return -1;
 }
 
 static inline int locker_unlock(Locker *thiz)
 {
-	assert(thiz != NULL && thiz->unlock != NULL);
+    assert(thiz != NULL && thiz->unlock != NULL);
 
-	if(thiz != NULL && thiz->unlock != NULL)
-	{
-		return thiz->unlock(thiz);
-	}
+    if(thiz != NULL && thiz->unlock != NULL)
+    {
+        return thiz->unlock(thiz);
+    }
 
-	return -1;
+    return -1;
 }
 
 static inline void locker_destroy(Locker *thiz)
 {
-	assert(thiz != NULL && thiz->destroy != NULL);
+    assert(thiz != NULL && thiz->destroy != NULL);
 
-	if(thiz != NULL && thiz->destroy != NULL)
-	{
-		thiz->destroy(thiz);
-	}
+    if(thiz != NULL && thiz->destroy != NULL)
+    {
+        thiz->destroy(thiz);
+    }
 
-	return;
+    return;
 }
 
 CUCB_END

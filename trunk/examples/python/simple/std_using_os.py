@@ -8,11 +8,11 @@ print '\nCurrent directory is', os.getcwd()
 print '\n[Files&Directorys]'
 dirlist = os.listdir(os.getcwd())
 for item in dirlist:
-	if os.path.isfile(item):
-		print '\tFile: ',
-	elif os.path.isdir(item):
-		print '\tDir:  ',
-	print item
+    if os.path.isfile(item):
+        print '\tFile: ',
+    elif os.path.isdir(item):
+        print '\tDir:  ',
+    print item
 
 print
 curpyfile = os.getcwd() + os.sep + 'std_using_os.py'

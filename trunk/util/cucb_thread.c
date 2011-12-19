@@ -19,25 +19,25 @@
 
 HandleType thread_start(ThreadFunc proc, void *param)
 {
-	HandleType handle = 0;
+    HandleType handle = 0;
 #if defined(WIN32) || defined(WINCE)
-	unsigned int id = 0;
-	handle = (HANDLE)_beginthreadex(NULL, 0, 
-				proc, param, 0, &id);
+    unsigned int id = 0;
+    handle = (HANDLE)_beginthreadex(NULL, 0, 
+                proc, param, 0, &id);
 #elif defined(LINUX) || defined(UNIX)
-	pthread_create(&handle, NULL, proc, param);
+    pthread_create(&handle, NULL, proc, param);
 #endif
 
-	return handle;
+    return handle;
 }
 
 void thread_wait(HandleType handle)
 {
 #if defined(WIN32) || defined(WINCE)
-	WaitForSingleObject(handle, INFINITE);
+    WaitForSingleObject(handle, INFINITE);
 #elif defined(LINUX) || defined(UNIX)
-	pthread_join(handle, NULL);
+    pthread_join(handle, NULL);
 #endif
 
-	return;
+    return;
 }

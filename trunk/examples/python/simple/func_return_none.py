@@ -2,7 +2,7 @@
 #Filename: func_return_none.py
 
 def func():
-	pass
+    pass
 
 print func()
 

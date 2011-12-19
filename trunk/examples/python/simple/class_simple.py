@@ -2,7 +2,7 @@
 #Filename: class_simple.py
 
 class Person:
-	pass
+    pass
 p = Person()
 print p
 

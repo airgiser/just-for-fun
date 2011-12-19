@@ -25,7 +25,7 @@ UCB_BEGIN
  * \return 0 if succeed, -1 if failed 
  */
 int bezier_spline(DPoint *points, size_t degree, 
-		DPoint *spline, size_t spline_size);
+        DPoint *spline, size_t spline_size);
 
 UCB_END
 

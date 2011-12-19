@@ -2,7 +2,7 @@
 # Filename class_method.py
 
 class Person:
-	def sayhello(self):
-		print "hello"
+    def sayhello(self):
+        print "hello"
 p = Person()
 p.sayhello()
