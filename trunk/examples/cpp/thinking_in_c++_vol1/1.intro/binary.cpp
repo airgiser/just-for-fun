@@ -82,6 +82,7 @@ int main()
     val_print("a | b = ", (a | b));
     val_print("a ^ b = ", (a ^ b));
 
+    //
     unsigned char c = 0x5A;
     val_print("c = ", c);
 
@@ -94,9 +95,22 @@ int main()
     b ^= a;
     val_print("b ^= a; b = ", b);
 
+    //
     val_print("right rotation; c = ", right_rotation(c));
 
     val_print("left rotation; c = ", left_rotation(c));
+
+    //
+    double dval = 1.0;
+    cout<<dval<<endl;
+
+    unsigned char *p = reinterpret_cast<unsigned char *>(&dval);
+    int i = 0;
+    for(i = sizeof(double) - 1; i > 0; i -= 2)
+    {
+        binary_print(p[i-1]);
+        binary_print(p[i]);
+    }
 
     return 0;
 }
