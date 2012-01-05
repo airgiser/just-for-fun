@@ -1,6 +1,6 @@
 /*
- * \brief
- * \author
+ * \brief Demo of the erase() member function.
+ * \author airfox
  */
 
 #include <iostream>
@@ -42,9 +42,9 @@ void process_body(istream &fin, ostream &fout)
             fout<<strline<<endl;
             return;
         }
-        if(strline.find("<P>") != string::npos)
+        if(strline.find("<P") != string::npos)
         {
-            fout<<endl;
+            fout<<"\n";
         }
         else
         {

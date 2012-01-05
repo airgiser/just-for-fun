@@ -1,11 +1,35 @@
-all:
-	g++ -g format.cpp -o format
-	g++ -g concat.cpp -o concat
-	g++ -g numconv.cpp -o numconv
-	g++ -g callother.cpp -o callother
-	g++ -g textfileio.cpp -o textfileio
-	g++ -g vectorintro.cpp -o vecintro
-	g++ -g binary.cpp -o binary
+CPP = g++
+OFLAG = -o
+
+all: \
+	format \
+	concat \
+	numconv \
+	callother \
+	textfileio \
+	vecintro \
+	binary
+
+format: format.cpp
+	$(CPP) $(OFLAG) format format.cpp
+
+concat: concat.cpp
+	$(CPP) $(OFLAG) concat concat.cpp
+
+numconv: numconv.cpp
+	$(CPP) $(OFLAG) numconv numconv.cpp
+
+callother: callother.cpp
+	$(CPP) $(OFLAG) callother callother.cpp
+
+textfileio: textfileio.cpp
+	$(CPP) $(OFLAG) textfileio textfileio.cpp
+
+vecintro: vectorintro.cpp
+	$(CPP) $(OFLAG) vecintro vectorintro.cpp
+
+binary: binary.cpp
+	$(CPP) $(OFLAG) binary binary.cpp
 
 clean:
 	rm -f format
