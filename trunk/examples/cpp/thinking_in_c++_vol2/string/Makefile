@@ -33,4 +33,6 @@ cmp_demo: stringcmp.cpp
 	
 clean:
 	rm -f *demo
+	rm -f output
+	rm -f output.html
 	rm -f *~
