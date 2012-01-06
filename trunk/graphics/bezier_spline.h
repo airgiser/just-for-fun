@@ -7,8 +7,8 @@
  * \author airfox <airgis@163.com>
  */
 
-#ifndef UCB_BEZIER_SPLINE_H_
-#define UCB_BEZIER_SPLINE_H_
+#ifndef UCB_BEZIER_SPLINE_H
+#define UCB_BEZIER_SPLINE_H
 
 #include "point.h"
 
@@ -29,4 +29,4 @@ int bezier_spline(DPoint *points, size_t degree,
 
 UCB_END
 
-#endif/*UCB_BEZIER_SPLINE_H_*/
+#endif/*UCB_BEZIER_SPLINE_H*/

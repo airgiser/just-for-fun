@@ -1,19 +1,19 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_file.h
+ * \file ucb_file.h
  * \brief file utility
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_FILE_H_
-#define CUCB_FILE_H_
+#ifndef UCB_FILE_H
+#define UCB_FILE_H
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 #include <stdio.h>
 
-CUCB_BEGIN
+UCB_BEGIN
 
 typedef enum _FileAccessMode
 {
@@ -312,6 +312,6 @@ MappedFile *file_mapping(const char *filename);
  */
 void file_unmap(MappedFile *mapped_file);
 
-CUCB_END
+UCB_END
 
-#endif
+#endif/*UCB_FILE_H*/

@@ -7,8 +7,8 @@
  * \author airfox <airgis@163.com>
  */
 
-#ifndef UCB_TYPEDEF_H_
-#define UCB_TYPEDEF_H_
+#ifndef UCB_TYPEDEF_H
+#define UCB_TYPEDEF_H
 
 #include<stdlib.h>
 
@@ -22,4 +22,4 @@ typedef int (*DataCompareFunc)(void *context, void *data);
 #define UCB_END
 #endif/*__cplusplus*/
 
-#endif/*UCB_TYPEDEF_H_*/
+#endif/*UCB_TYPEDEF_H*/

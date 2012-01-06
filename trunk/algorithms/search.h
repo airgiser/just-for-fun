@@ -7,8 +7,8 @@
  * \author airfox <airgis@163.com>
  */
 
-#ifndef UCB_SEARCH_H_
-#define UCB_SEARCH_H_
+#ifndef UCB_SEARCH_H
+#define UCB_SEARCH_H
 
 #include "typedef.h"
 
@@ -18,4 +18,4 @@ int binary_search(void **array, size_t size, void *data, DataCompareFunc cmp);
 
 UCB_END
 
-#endif/*UCB_SEARCH_H_*/
+#endif/*UCB_SEARCH_H*/

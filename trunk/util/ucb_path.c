@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_path.c
+ * \file ucb_path.c
  * \brief path utility
  *
  * \author airfox <airgis@163.com>
@@ -20,8 +20,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include "cucb_string.h"
-#include "cucb_path.h"
+#include "ucb_string.h"
+#include "ucb_path.h"
 
 /* Beware of buffer overflow, if the length of buffer filename
  * is not long enough(because of strncpy or str_substr used). 

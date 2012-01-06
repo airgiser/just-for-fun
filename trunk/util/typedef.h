@@ -10,8 +10,6 @@
 #ifndef UCB_TYPEDEF_H
 #define UCB_TYPEDEF_H
 
-#include<stdlib.h>
-
 #ifdef __cplusplus
 #define UCB_BEGIN extern "C" {
 #define UCB_END }

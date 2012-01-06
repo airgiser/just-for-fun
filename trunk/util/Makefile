@@ -3,11 +3,11 @@ DFLAG = -D LINUX
 OFLAG = -o
 LFLAG = -lpthread
 
-timesrc = cucb_time.c cucb_time_test.c
-filesrc = cucb_file.c cucb_path.c cucb_string.c cucb_file_test.c
-pathsrc = cucb_path.c cucb_string.c cucb_path_test.c
-strsrc = cucb_string.c cucb_string_test.c
-lockersrc = cucb_locker_normal.c cucb_thread.c cucb_locker_test.c
+timesrc = ucb_time.c ucb_time_test.c
+filesrc = ucb_file.c ucb_path.c ucb_string.c ucb_file_test.c
+pathsrc = ucb_path.c ucb_string.c ucb_path_test.c
+strsrc = ucb_string.c ucb_string_test.c
+lockersrc = locker_normal.c thread.c locker_test.c
 
 all: \
 	time_test \

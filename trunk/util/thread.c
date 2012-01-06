@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_thread.c
+ * \file thread.c
  * \brief simple thread interface
  *
  * \author airfox <airgis@163.com>
@@ -15,7 +15,7 @@
 #endif
 
 #include <stdlib.h>
-#include "cucb_thread.h"
+#include "thread.h"
 
 HandleType thread_start(ThreadFunc proc, void *param)
 {
@@ -41,3 +41,12 @@ void thread_wait(HandleType handle)
 
     return;
 }
+
+#if defined(WIN32) || defined(WINCE)
+void thread_release(HandleType handle)
+{
+    CloseHandle(handle);
+
+    return;
+}
+#endif

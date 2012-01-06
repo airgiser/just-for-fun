@@ -1,7 +1,10 @@
 /*
+ * Copyright (c) airfox 2012
  *
+ * \brief TODO
+ * \author airfox<airgis@163.com>
  */
-#include "cucb_mempool.h"
+#include "mempool.h"
 
 typedef struct _MemBlock
 {

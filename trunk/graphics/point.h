@@ -7,8 +7,8 @@
  * \author airfox <airgis@163.com>
  */
 
-#ifndef UCB_POINT_H_
-#define UCB_POINT_H_
+#ifndef UCB_POINT_H
+#define UCB_POINT_H
 
 #include "typedef.h"
 
@@ -27,4 +27,4 @@ void points_destroy(DPoint *pts);
 
 UCB_END
 
-#endif/*UCB_POINT_H_*/
+#endif/*UCB_POINT_H*/

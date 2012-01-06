@@ -1,19 +1,19 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_string.h
+ * \file ucb_string.h
  * \brief string utility
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_STRING_H_
-#define CUCB_STRING_H_
+#ifndef UCB_STRING_H
+#define UCB_STRING_H
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 #include <stdlib.h>
 
-CUCB_BEGIN
+UCB_BEGIN
 
 /*!
  * \brief Copy the sub string of src to dest,
@@ -171,6 +171,6 @@ size_t utf8_to_wchar(wchar_t *dest, const char *src, size_t maximum);
 size_t wchar_to_utf8(char *dest, wchar_t *src, size_t maximum);
 #endif
 
-CUCB_END
+UCB_END
 
-#endif
+#endif/*UCB_STRING_H*/

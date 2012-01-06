@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "cucb_locker_normal.h"
-#include "cucb_thread.h"
+#include "locker_normal.h"
+#include "thread.h"
 
 #define MAX 500
 typedef struct _SimpleData

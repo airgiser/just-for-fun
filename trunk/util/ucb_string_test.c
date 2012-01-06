@@ -2,7 +2,7 @@
 #include <string.h>
 #include <locale.h>
 #include <assert.h>
-#include "cucb_string.h"
+#include "ucb_string.h"
 
 #define MAX_LEN 256
 

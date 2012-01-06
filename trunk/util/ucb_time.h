@@ -1,18 +1,18 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_time.h
+ * \file ucb_time.h
  * \brief time utility
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_TIME_H_
-#define CUCB_TIME_H_
+#ifndef UCB_TIME_H
+#define UCB_TIME_H
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
 typedef struct _TimeInfo
 {
@@ -39,6 +39,6 @@ void time_get_microsecond(TimeMicro *micro_time);
 int time_get_delay(TimeMicro *start_time, TimeMicro *end_time, 
         TimeMicro *sub_time);
 
-CUCB_END
+UCB_END
 
-#endif/*CUCB_TIME_H_*/
+#endif/*UCB_TIME_H*/

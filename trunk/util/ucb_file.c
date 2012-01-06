@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_file.c
+ * \file ucb_file.c
  * \brief file utility
  *
  * \author airfox <airgis@163.com>
@@ -16,7 +16,7 @@
 
 #include <stdlib.h>
 #include <sys/stat.h>
-#include "cucb_file.h"
+#include "ucb_file.h"
 
 
 void *file_open(const char *filename, FileAccessMode mode)
