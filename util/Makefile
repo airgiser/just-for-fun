@@ -9,6 +9,8 @@ pathsrc = ucb_path.c ucb_string.c ucb_path_test.c
 strsrc = ucb_string.c ucb_string_test.c
 lockersrc = locker_normal.c thread.c locker_test.c
 eventsrc = event_test.c event.c thread.c
+serversrc = ucb_server_test.c
+clientsrc = ucb_client_test.c ucb_socket.c
 
 all: \
 	time_test \
@@ -16,7 +18,9 @@ all: \
 	path_test \
 	str_test \
 	locker_test \
-	event_test
+	event_test \
+	server_test \
+	client_test
 
 time_test: $(timesrc)
 	$(C) $(DFLAG) $(OFLAG) time_test $(timesrc)
@@ -36,6 +40,12 @@ locker_test: $(lockersrc)
 event_test: $(eventsrc)
 	$(C) $(DFLAG) $(OFLAG) event_test $(eventsrc) $(LFLAG)
 
+server_test: $(serversrc)
+	$(C) $(DFLAG) $(OFLAG) server_test $(serversrc)
+
+client_test: $(clientsrc)
+	$(C) $(DFLAG) $(OFLAG) client_test $(clientsrc)
+
 clean:
 	rm -f time_test
 	rm -f file_test
@@ -43,6 +53,8 @@ clean:
 	rm -f str_test
 	rm -f locker_test
 	rm -f event_test
+	rm -f server_test
+	rm -f client_test
 	rm -f test.bin
 	rm -f *.o
 	rm -f *~
