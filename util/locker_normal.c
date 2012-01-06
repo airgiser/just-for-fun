@@ -2,7 +2,7 @@
  * Copyright (c) airfox 2011
  *
  * \file locker_normal.c
- * \brief a normal locker for win32 or linux platform
+ * \brief a normal locker for win32 or unix platform
  *
  * \author airfox <airgis@163.com>
  */

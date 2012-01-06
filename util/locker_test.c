@@ -1,23 +1,16 @@
-#if defined(WIN32) || defined(WINCE)
-#include <windows.h>
-#elif defined(LINUX) || defined(UNIX)
-#include <unistd.h>
-#endif
-
-#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "locker_normal.h"
 #include "thread.h"
 
 #define MAX 500
-typedef struct _SimpleData
+typedef struct _SharedData
 {
     int i;
     char str[MAX + 1];
 
     Locker *locker;
-}SimpleData;
+}SharedData;
 
 #if defined(WIN32) || defined(WINCE)
 unsigned long WINAPI thread_func(void *param)
@@ -25,7 +18,7 @@ unsigned long WINAPI thread_func(void *param)
 void *thread_func(void *param)
 #endif
 {
-    SimpleData *pdata = (SimpleData *)param;
+    SharedData *pdata = (SharedData *)param;
     while(1)
     {
         locker_lock(pdata->locker);
@@ -56,7 +49,7 @@ int main(int argc, char *argv[])
     HandleType h_one;
     HandleType h_two;
 
-    SimpleData data;
+    SharedData data;
     data.i = 0;
     memset(data.str, 0, MAX + 1);
     data.locker = locker_normal_create();
