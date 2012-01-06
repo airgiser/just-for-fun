@@ -1,22 +1,22 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_locker_normal.h
+ * \file locker_normal.h
  * \brief a normal locker for win32 or linux platform
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_LOCKER_NORMAL_H_
-#define CUCB_LOCKER_NORMAL_H_
+#ifndef UCB_LOCKER_NORMAL_H
+#define UCB_LOCKER_NORMAL_H
 
-#include "cucb_typedef.h"
-#include "cucb_locker.h"
+#include "typedef.h"
+#include "locker.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
 Locker *locker_normal_create(void);
 
-CUCB_END
+UCB_END
 
-#endif
+#endif/*UCB_LOCKER_NORMAL_H*/

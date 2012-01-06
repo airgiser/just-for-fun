@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_time.c
+ * \file ucb_time.c
  * \brief time utility
  *
  * \author airfox <airgis@163.com>
@@ -14,7 +14,7 @@
 #endif
 
 #include <time.h>
-#include "cucb_time.h"
+#include "ucb_time.h"
 
 
 void time_get_now(TimeInfo *cur_time)

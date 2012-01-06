@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_locker_normal.c
+ * \file locker_normal.c
  * \brief a normal locker for win32 or linux platform
  *
  * \author airfox <airgis@163.com>
@@ -14,7 +14,7 @@
 #include <pthread.h>
 #endif
 
-#include "cucb_locker_normal.h"
+#include "locker_normal.h"
 
 typedef struct _PrivInfo
 {

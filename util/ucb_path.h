@@ -1,18 +1,18 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_path.h
+ * \file ucb_path.h
  * \brief path utility
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_PATH_H_
-#define CUCB_PATH_H_
+#ifndef UCB_PATH_H
+#define UCB_PATH_H
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
 #if defined(WIN32) || defined(WINCE)
 #define PATH_SEPARATOR '\\'
@@ -60,6 +60,6 @@ int path_is_dir(const char *path);
 char *path_normalize(char *path);
 #endif
 
-CUCB_END
+UCB_END
 
-#endif/*CUCB_PATH_H_*/
+#endif/*UCB_PATH_H*/

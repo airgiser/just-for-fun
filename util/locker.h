@@ -1,20 +1,20 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_locker.h
+ * \file locker.h
  * \brief interface definition of a locker
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_LOCKER_H_
-#define CUCB_LOCKER_H_
+#ifndef UCB_LOCKER_H
+#define UCB_LOCKER_H
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 #include <stdlib.h>
 #include <assert.h>
 
-CUCB_BEGIN
+UCB_BEGIN
 
 struct _Locker;
 typedef struct _Locker Locker;
@@ -68,6 +68,6 @@ static inline void locker_destroy(Locker *thiz)
     return;
 }
 
-CUCB_END
+UCB_END
 
-#endif
+#endif/*UCB_LOCKER_H*/

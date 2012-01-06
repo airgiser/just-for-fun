@@ -5,7 +5,7 @@
 #endif
 
 #include <stdio.h>
-#include "cucb_time.h"
+#include "ucb_time.h"
 
 
 int main(int argc, char argv[])

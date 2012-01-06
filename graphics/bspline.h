@@ -7,8 +7,8 @@
  * \author arifox <airgis@163.com>
  */
 
-#ifndef UCB_BSPLINE_H_
-#define UCB_BSPLINE_H_
+#ifndef UCB_BSPLINE_H
+#define UCB_BSPLINE_H
 
 #include "point.h"
 
@@ -40,4 +40,4 @@ int cubic_b_spline_interp(DPoint p1, DPoint p2, DPoint p3, DPoint p4,
 
 UCB_END
 
-#endif/*UCB_BSPLINE_H_*/
+#endif/*UCB_BSPLINE_H*/

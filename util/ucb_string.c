@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_string.c
+ * \file ucb_string.c
  * \brief string utility
  *
  * \author airfox <airgis@163.com>
@@ -15,7 +15,7 @@
 #endif
 
 #include <assert.h>
-#include "cucb_string.h"
+#include "ucb_string.h"
 
 
 /* Buffer overfolw if the length of buffer dest 

@@ -7,8 +7,8 @@
  * \author airfox <airgis@163.com>
  */
 
-#ifndef UCB_SORT_H_
-#define UCB_SORT_H_
+#ifndef UCB_SORT_H
+#define UCB_SORT_H
 
 #include "typedef.h"
 
@@ -18,4 +18,4 @@ void quick_sort(void **array, size_t size, DataCompareFunc cmp);
 
 UCB_END
 
-#endif /*UCB_SORT_H_*/
+#endif /*UCB_SORT_H*/

@@ -1,30 +1,36 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file cucb_thread.h
+ * \file thread.h
  * \brief simple thread interface
  *
  * \author airfox <airgis@163.com>
  */
 
-#ifndef CUCB_THREAD_H_
-#define CUCB_THREAD_H_
+#ifndef UCB_THREAD_H
+#define UCB_THREAD_H
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
+/* typedef HandleType and ThreadFunc */
 #if defined(WIN32) || defined(WINCE)
 typedef HANDLE HandleType;
-typedef unsigned (__stdcall *ThreadFunc)(void *param);
+typedef unsigned int (__stdcall *ThreadFunc)(void *param);
 #elif defined(LINUX) || defined(UNIX)
 typedef pthread_t HandleType;
 typedef void *(*ThreadFunc)(void *param);
 #endif
 
+/* Thread interface */
 HandleType thread_start(ThreadFunc proc, void *param);
 void thread_wait(HandleType handle);
 
-CUCB_END
+#if defined(WIN32) || defined(WINCE)
+void thread_release(HandleType handle);
+#endif
 
-#endif/*CUCB_THREAD_H_*/
+UCB_END
+
+#endif/*UCB_THREAD_H*/

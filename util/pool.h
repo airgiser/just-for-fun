@@ -1,15 +1,15 @@
-/*
- * Copyright (c) airfox
+/*!
+ * Copyright (c) airfox 2012
  *
  * \brief Interface definition of a memory pool.
  * \author airfox <airgis@163.com>
  */
-#ifndef CUCB_MEM_POOL_H_
-#define CUCB_MEM_POOL_H_
+#ifndef UCB_POOL_H
+#define UCB_POOL_H
 
-#include "cucb_typedef.h"
+#include "typedef.h"
 
-CUCB_BEGIN
+UCB_BEGIN
 
 struct _MemPool;
 typedef struct _MemPool MemPool;
@@ -21,7 +21,6 @@ void mempool_free(void *p);
 
 void mempool_destroy(MemPool *thiz);
 
+UCB_END
 
-CUCB_END
-
-#endif/*CUCB_MEM_POOL_H_*/
+#endif/*UCB_POOL_H*/
