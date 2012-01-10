@@ -57,6 +57,6 @@ struct ichar_traits : public std::char_traits<char>
         }
         return str;
     }
-}
+};
 
 #endif//ICHAR_TRAITS_H
