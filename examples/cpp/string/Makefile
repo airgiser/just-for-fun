@@ -8,7 +8,8 @@ all: \
 	search_demo \
 	html_demo \
 	strip_demo \
-	cmp_demo
+	cmp_demo \
+	iter_demo
 
 storage_demo: stringstorage.cpp
 	$(CPP) $(OFLAG) storage_demo stringstorage.cpp 
@@ -30,6 +31,9 @@ strip_demo: striphtml.cpp
 
 cmp_demo: stringcmp.cpp
 	$(CPP) $(OFLAG) cmp_demo stringcmp.cpp 
+
+iter_demo: stringiter.cpp
+	$(CPP) $(OFLAG) iter_demo stringiter.cpp
 	
 clean:
 	rm -f *demo

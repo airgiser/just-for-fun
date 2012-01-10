@@ -69,7 +69,7 @@ int main()
     int result = strone.compare(0, 2, strtwo, 0, 2);
     if(result == 0)
     {
-            cout<<"The 0~2 characters of the two strings are equal.";
+            cout<<"The 0~2 characters of the two strings are equal."<<endl;
     }
 
     return 0;
