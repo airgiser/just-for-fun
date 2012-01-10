@@ -9,7 +9,8 @@ all: \
 	html_demo \
 	strip_demo \
 	cmp_demo \
-	iter_demo
+	iter_demo \
+	traits_demo
 
 storage_demo: stringstorage.cpp
 	$(CPP) $(OFLAG) storage_demo stringstorage.cpp 
@@ -34,6 +35,9 @@ cmp_demo: stringcmp.cpp
 
 iter_demo: stringiter.cpp
 	$(CPP) $(OFLAG) iter_demo stringiter.cpp
+
+traits_demo: stringtraits.cpp
+	$(CPP) $(OFLAG) traits_demo stringtraits.cpp
 	
 clean:
 	rm -f *demo
