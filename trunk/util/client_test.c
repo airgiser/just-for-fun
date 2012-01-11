@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ucb_socket.h"
+#include "socket.h"
 
 #define SRVPORT 3688
 #define MAXLEN 256

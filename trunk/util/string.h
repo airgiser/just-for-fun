@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file ucb_string.h
+ * \file string.h
  * \brief string utility
  *
  * \author airfox <airgis@163.com>
