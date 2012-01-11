@@ -1,7 +1,7 @@
 #include <string.h>
 #include <assert.h>
-#include "ucb_file.h"
-#include "ucb_path.h"
+#include "file.h"
+#include "path.h"
 
 #define MAX_LEN 256
 int main(int argc, char *argv[])

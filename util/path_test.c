@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "ucb_path.h"
+#include "path.h"
 
 #define MAX_LEN 256
 static void path_test(void)

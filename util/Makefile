@@ -1,16 +1,18 @@
 C = gcc
+CPP = g++
 DFLAG = -D LINUX
 OFLAG = -o
 LFLAG = -lpthread
 
 timesrc = time.c time_test.c
-filesrc = ucb_file.c ucb_path.c string.c ucb_file_test.c
-pathsrc = ucb_path.c string.c ucb_path_test.c
+filesrc = file.c path.c string.c file_test.c
+pathsrc = path.c string.c path_test.c
 strsrc = string.c string_test.c
 lockersrc = locker_normal.c thread.c locker_test.c
 eventsrc = event_test.c event.c thread.c
 serversrc = server_test.c
 clientsrc = client_test.c socket.c
+cppstrsrc = stringoper.cpp string_test.cpp
 
 all: \
 	time_test \
@@ -20,7 +22,8 @@ all: \
 	locker_test \
 	event_test \
 	server_test \
-	client_test
+	client_test \
+	cppstr_test
 
 time_test: $(timesrc)
 	$(C) $(DFLAG) $(OFLAG) time_test $(timesrc)
@@ -46,6 +49,9 @@ server_test: $(serversrc)
 client_test: $(clientsrc)
 	$(C) $(DFLAG) $(OFLAG) client_test $(clientsrc)
 
+cppstr_test: $(cppstrsrc)
+	$(CPP) $(OFLAG) cppstr_test $(cppstrsrc)
+
 clean:
 	rm -f time_test
 	rm -f file_test
@@ -55,6 +61,7 @@ clean:
 	rm -f event_test
 	rm -f server_test
 	rm -f client_test
+	rm -f cppstr_test
 	rm -f test.bin
 	rm -f *.o
 	rm -f *~
