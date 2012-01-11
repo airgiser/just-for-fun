@@ -15,30 +15,24 @@ namespace ucb
 {
     using std::string;
 
-    //
     // Trim unwanted characters from string.
-    //
-    string &ltrim(string &str, char junk = ' ');
-    string &rtrim(string &str, char junk = ' ');
-    string &trim(string &str, char junk = ' ');
+    string ltrim(const string &str, const string &junks = " \t");
+    string rtrim(const string &str, const string &junks = " \t");
+    string trim(const string &str, const string &junks = " \t");
 
-    string &ltrim(string &str, const string &junks);
-    string &rtrim(string &str, const string &junks);
-    string &trim(string &str, const string &junks);
-
-    //
     // Convert character case
-    //
-    string &to_upper(string &str);
-    string &to_lower(string &str);
+    string to_upper(const string &str);
+    string to_lower(const string &str);
 
-    string get_upper(const string &str);
-    string get_lower(const string &str);
+    // Compare insensitive
+    int icmp(const string &first, const string &second);
 
-    //
-    // Replace all the sub string(orgin) in src string.
-    //
-    string &replace_all(string &src, const string &orgin, const string&newstr);
+    // Replace.
+    string &replace(string &str, const string &origin, const string &newstr);
+    string &replace_all(string &str, const string &origin, const string& newstr);
+
+    // Erase
+    string &erase_tag(string &str, const string &tag);
 
 } // namespace
 

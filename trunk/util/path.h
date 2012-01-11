@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file ucb_path.h
+ * \file path.h
  * \brief path utility
  *
  * \author airfox <airgis@163.com>
