@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2011
  *
- * \file ucb_time.h
+ * \file time.h
  * \brief time utility
  *
  * \author airfox <airgis@163.com>

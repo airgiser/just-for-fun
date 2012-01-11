@@ -6,7 +6,7 @@
  */
 
 #include <assert.h>
-#include "ucb_socket.h"
+#include "socket.h"
 
 
 #if defined(WIN32) || defined(WINCE)

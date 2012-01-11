@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include "ucb_string.h"
+#include "string.h"
 #include "ucb_path.h"
 
 /* Beware of buffer overflow, if the length of buffer filename

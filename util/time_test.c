@@ -5,7 +5,7 @@
 #endif
 
 #include <stdio.h>
-#include "ucb_time.h"
+#include "time.h"
 
 
 int main(int argc, char argv[])
