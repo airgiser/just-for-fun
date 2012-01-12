@@ -8,13 +8,25 @@ inline void print(const string &str)
     cout<<"["<<str<<"]"<<"[size: "<<str.size()<<"]"<<endl;
 }
 
-int main()
+void trim_demo()
 {
     string str("   This is a simple string. \t   ");
     print(rtrim(str));
     print(ltrim(str));
     print(trim(str));
 
+    string seqstr(20, 'N');
+    print(seqstr);
+    print(rtrim(seqstr, "N"));
+
+    cout<<endl;
+}
+
+int main()
+{
+    trim_demo();
+
+    string str("   This is a simple string. \t   ");
     print(replace(str, "s", "S"));
     print(replace_all(str, "i", "I"));
 
