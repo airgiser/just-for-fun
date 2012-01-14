@@ -3,6 +3,7 @@
  * \author arifox
  */
 #include <stdio.h>
+#include <string.h>
 
 static void binary_print(unsigned char val)
 {
@@ -81,6 +82,9 @@ int main(int argc, char *argv[])
 {
     int val = 0x10203040;
     bytes_print_test(val);
+
+    char *str = "123ABC";
+    bytes_print(str, strlen(str) + 1);
 
     return 0;
 }

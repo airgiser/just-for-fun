@@ -13,15 +13,16 @@
 #include <windows.h>
 #endif
 
-#include <time.h>
 #include "time.h"
+#include <time.h>
+#include <assert.h>
 
-
-void time_get_now(TimeInfo *cur_time)
+double time_get_now(TimeInfo *cur_time)
 {
     time_t t = time(NULL);
     struct tm *loc_time = localtime(&t);
 
+    assert(cur_time != NULL);
     cur_time->year = loc_time->tm_year + 1900;
     cur_time->month = loc_time->tm_mon + 1;
     cur_time->day = loc_time->tm_mday;
@@ -30,7 +31,13 @@ void time_get_now(TimeInfo *cur_time)
     cur_time->second = loc_time->tm_sec;
     cur_time->weekday = loc_time->tm_wday;
 
-    return;
+    return (double)t;
+}
+
+double time_get_timestamp()
+{
+    time_t stamp = time(NULL);
+    return (double)stamp;
 }
 
 void time_get_microsecond(TimeMicro *micro_time)
@@ -39,6 +46,7 @@ void time_get_microsecond(TimeMicro *micro_time)
     struct timeval time;
     gettimeofday(&time, NULL);
 
+    assert(micro_time != NULL);
     micro_time->second = (int)(time.tv_sec);
     micro_time->microsecond = (int)(time.tv_usec);
 #elif defined(WIN32)
@@ -54,6 +62,7 @@ void time_get_microsecond(TimeMicro *micro_time)
     second = sec_per_tick * li.QuadPart;
     microsecond = (second - (int)second) * 1000000;
 
+    assert(micro_time != NULL);
     micro_time->second = (int)(second);
     micro_time->microsecond = microsecond;
 #endif
@@ -63,6 +72,7 @@ void time_get_microsecond(TimeMicro *micro_time)
 int time_get_delay(TimeMicro *start_time, TimeMicro *end_time, TimeMicro *sub_time)
 {
     /*Exception*/
+    assert(start_time != NULL && end_time != NULL && sub_time != NULL);
     if(start_time->second > end_time->second)
     {
         return -1;

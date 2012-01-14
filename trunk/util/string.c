@@ -21,7 +21,7 @@
 /* Buffer overfolw if the length of buffer dest 
  * is not long enough(because of strncpy used).
  */
-char *str_substr(char *dest, const char *src, size_t start, size_t num)
+char *str_substr(char *dest, char *src, size_t start, size_t num)
 {
     assert(dest != NULL && src != NULL);
     if((start + num) > strlen(src))
@@ -36,7 +36,7 @@ char *str_substr(char *dest, const char *src, size_t start, size_t num)
     return dest;
 }
 
-size_t str_find_first_of(const char *str, int character)
+size_t str_find_first_of(char *str, int character)
 {
     size_t pos = -1;
     char *p = strchr(str, character);
@@ -48,7 +48,7 @@ size_t str_find_first_of(const char *str, int character)
     return pos;
 }
 
-size_t str_find_last_of(const char *str, int character)
+size_t str_find_last_of(char *str, int character)
 {
     size_t pos = -1;
     char *p = strrchr(str, character);
@@ -60,7 +60,7 @@ size_t str_find_last_of(const char *str, int character)
     return pos;
 }
 
-size_t str_find_first_not_of(const char *str, int character)
+size_t str_find_first_not_of(char *str, int character)
 {
     int i = 0;
     int len = strlen(str);
@@ -72,7 +72,7 @@ size_t str_find_first_not_of(const char *str, int character)
     return ((i == len) ? -1 : i);
 }
 
-size_t str_find_last_not_of(const char *str, int character)
+size_t str_find_last_not_of(char *str, int character)
 {
     int i = strlen(str) - 1;
     while(i >= 0 && str[i] == character)
@@ -154,7 +154,7 @@ char *str_to_upper(char *str)
     return str;
 }
 
-size_t str_find(const char *str, const char *substr)
+size_t str_find(char *str, char *substr)
 {
     size_t pos = -1;
     char *p = strstr(str, substr);
@@ -166,7 +166,7 @@ size_t str_find(const char *str, const char *substr)
     return pos;
 }
 
-int str_start_with(const char *source, const char *start)
+int str_start_with(char *source, char *start)
 {
     int i = 0;
     size_t sublen = strlen(start);
@@ -188,7 +188,7 @@ int str_start_with(const char *source, const char *start)
     return 1;
 }
 
-int str_end_with(const char *source, const char *end)
+int str_end_with(char *source, char *end)
 {
     int i = 0;
     int sublen = strlen(end);
@@ -211,18 +211,18 @@ int str_end_with(const char *source, const char *end)
     return 1;
 }
 
-size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum)
+size_t mb_to_wchar(wchar_t *dest, char *src, size_t maximum)
 {
     return mbstowcs(dest, src, maximum);
 }
 
-size_t wchar_to_mb(char *dest, const wchar_t *src, size_t maximum)
+size_t wchar_to_mb(char *dest, wchar_t *src, size_t maximum)
 {
     return wcstombs(dest, src, maximum);
 }
 
 #if defined(LINUX) || defined(UNIX)
-static size_t encoding_convert(const char *tocode, const char *fromcode, 
+static size_t encoding_convert(char *tocode, char *fromcode, 
         char *destbuf, size_t destlen, 
         char *srcbuf, size_t srclen)
 {
@@ -245,7 +245,7 @@ size_t utf8_to_gb(char *destbuf, char *srcbuf, size_t maximum)
 {
     size_t destlen = maximum;
     size_t srclen = strlen(srcbuf);
-    return encoding_convert("euc-cn", "utf-8", 
+    return encoding_convert((char *)"euc-cn", (char *)"utf-8", 
             destbuf, destlen, srcbuf, srclen);
 }
 
@@ -253,13 +253,13 @@ size_t gb_to_utf8(char *destbuf, char *srcbuf, size_t maximum)
 {
     size_t destlen = maximum;
     size_t srclen = strlen(srcbuf);
-    return encoding_convert("utf-8", "euc-cn",
+    return encoding_convert((char *)"utf-8", (char *)"euc-cn",
             destbuf, destlen, srcbuf, srclen);
 }
 #endif
 
 #if defined(WIN32) || defined(WINCE)
-size_t ansi_to_wchar(wchar_t *dest, const char *src, size_t maximum)
+size_t ansi_to_wchar(wchar_t *dest, char *src, size_t maximum)
 {
     /* The return value of the below function includes
      * the NULL termination characters
@@ -269,13 +269,13 @@ size_t ansi_to_wchar(wchar_t *dest, const char *src, size_t maximum)
     return count - 1;
 }
 
-size_t wchar_to_ansi(char *dest, const wchar_t *src, size_t maximum)
+size_t wchar_to_ansi(char *dest, wchar_t *src, size_t maximum)
 {
     int count = WideCharToMultiByte(/*CP_ACP*/936, 0, src, -1, dest, maximum, NULL, NULL);
     return count - 1;
 }
 
-size_t utf8_to_wchar(wchar_t *dest, const char *src, size_t maximum)
+size_t utf8_to_wchar(wchar_t *dest, char *src, size_t maximum)
 {
     int count = MultiByteToWideChar(CP_UTF8, 0, src, -1, dest, maximum);
     return count - 1;

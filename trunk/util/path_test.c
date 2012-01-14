@@ -55,7 +55,7 @@ static void path_test(void)
     assert(strcmp(str, mainname) == 0);
 }
 
-static void scan_dir_test(const char *path)
+static void scan_dir_test(char *path)
 {
     char **namelist = 0;
     int n = path_scan_directory(path, &namelist);

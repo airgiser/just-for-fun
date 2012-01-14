@@ -5,8 +5,8 @@
 #endif
 
 #include <stdio.h>
+#include <time.h>
 #include "time.h"
-
 
 int main(int argc, char argv[])
 {
@@ -32,5 +32,8 @@ int main(int argc, char argv[])
     time_get_delay(&start, &end, &delay);
 
     printf("%d:%d\n", delay.second, delay.microsecond);
+
+    printf("%lf\n", time_get_timestamp());
+
     return 0;
 }

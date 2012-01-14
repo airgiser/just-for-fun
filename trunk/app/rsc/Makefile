@@ -1,5 +1,8 @@
 CPP = g++
+# use gdb
+CPPG = g++ -g
 OFLAG = -o
+
 rscfile = rsc.h rsc.cpp rscoper.h rscoper.cpp main.cpp
 
 all: \
