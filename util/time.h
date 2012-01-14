@@ -33,7 +33,13 @@ typedef struct _TimeMicro
     int microsecond;/*1/1000000 second*/
 }TimeMicro;
 
-void time_get_now(TimeInfo *cur_time);
+double time_get_now(TimeInfo *cur_time);
+
+/*
+ * Return the number of seconds elapsed since
+ * the Epoch, 1970-01-01 00:00:00 +000 (UTC).
+ */
+double time_get_timestamp();
 
 void time_get_microsecond(TimeMicro *micro_time);
 int time_get_delay(TimeMicro *start_time, TimeMicro *end_time, 

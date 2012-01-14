@@ -26,7 +26,7 @@
 /* Beware of buffer overflow, if the length of buffer filename
  * is not long enough(because of strncpy or str_substr used). 
  */
-char *path_get_filename(char *filename, const char *fullpath)
+char *path_get_filename(char *filename, char *fullpath)
 {
     size_t pos = 0;
     assert(filename != NULL && fullpath != NULL);
@@ -45,7 +45,7 @@ char *path_get_filename(char *filename, const char *fullpath)
     return filename;
 }
 
-char *path_get_pathname(char *pathname, const char *fullpath)
+char *path_get_pathname(char *pathname, char *fullpath)
 {
     size_t pos = 0;
     assert(pathname != NULL && fullpath != NULL);
@@ -64,7 +64,7 @@ char *path_get_pathname(char *pathname, const char *fullpath)
     return pathname;
 }
 
-char *path_get_mainname(char *mainname, const char *filename)
+char *path_get_mainname(char *mainname, char *filename)
 {
     size_t pos = 0;
     assert(mainname != NULL && filename != NULL);
@@ -80,7 +80,7 @@ char *path_get_mainname(char *mainname, const char *filename)
     return mainname;
 }
 
-char *path_get_extension(char *extension, const char *filename)
+char *path_get_extension(char *extension, char *filename)
 {
     size_t pos = 0;
     size_t len = 0;
@@ -111,7 +111,7 @@ char *path_get_current_dir(char *dirname, size_t size)
 #endif
 }
 
-int path_scan_directory(const char *dirname, char ***namelist)
+int path_scan_directory(char *dirname, char ***namelist)
 {
 #if defined(WIN32) || defined(WINCE)
     char path[MAX_PATH];
@@ -191,7 +191,7 @@ int path_scan_directory(const char *dirname, char ***namelist)
 #endif
 }
 
-int path_is_dir(const char *path)
+int path_is_dir(char *path)
 {
 #if defined(WIN32) || defined(WINCE)
     DWORD attr = GetFileAttributesA(path);
@@ -225,6 +225,29 @@ int path_is_dir(const char *path)
     {
         return 1;
     }
+#endif
+}
+
+int path_create_dir(char *path)
+{
+    if(path_is_dir(path) == 0)
+    {
+        return 0;
+    }
+
+#if defined(WIN32) || defined(WINCE)
+    return CreateDirectoryA(path, NULL);
+#elif defined(LINUX) || defined(UNIX)
+    return mkdir(path, S_IRWXU);
+#endif
+}
+
+int path_append_sep(char *path)
+{
+#if defined(WIN32) || defined(WINCE)
+    strcat(path, "\\");
+#elif defined(LINUX) || defined(UNIX)
+    strcat(path, "/");
 #endif
 }
 

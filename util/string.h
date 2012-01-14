@@ -34,7 +34,7 @@ UCB_BEGIN
  * \return
  *  dest is returned
  */
-char *str_substr(char *dest, const char *src, size_t start, size_t num);
+char *str_substr(char *dest, char *src, size_t start, size_t num);
 
 /*!
  * \brief Locate first occurrence of character in string
@@ -48,13 +48,13 @@ char *str_substr(char *dest, const char *src, size_t start, size_t num);
  *  The pos where the first occurrence of character in str
  *  If failed, (size_t)(-1) is returned.
  */
-size_t str_find_first_of(const char *str, int character);
+size_t str_find_first_of(char *str, int character);
 
-size_t str_find_last_of(const char *str, int character);
+size_t str_find_last_of(char *str, int character);
 
-size_t str_find_first_not_of(const char *str, int character);
+size_t str_find_first_not_of(char *str, int character);
 
-size_t str_find_last_not_of(const char *str, int character);
+size_t str_find_last_not_of(char *str, int character);
 
 /*
  * Left trim of unwanted characters from a C string.
@@ -81,14 +81,14 @@ char *str_to_upper(char *str);
  *  The start position where the first occurrence of substr in str.
  *  If failed, (size_t)(-1) is returned.
  */
-size_t str_find(const char *str, const char *substr);
+size_t str_find(char *str, char *substr);
 
 /*
  * If the source string start with the start string, 1 is returned.
  * Otherwise, 0 is returned.
  */
-int str_start_with(const char *source, const char *start);
-int str_end_with(const char *source, const char *end);
+int str_start_with(char *source, char *start);
+int str_end_with(char *source, char *end);
 
 /*!
  * \brief Convert a multibyte string to a wide-character string
@@ -107,7 +107,7 @@ int str_end_with(const char *source, const char *end);
  *  If an invalid multibyte character is encountered,
  *  a (size_t)(-1) value is returned.
  */
-size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum);
+size_t mb_to_wchar(wchar_t *dest, char *src, size_t maximum);
 
 /*!
  * \brief Convert a wide-character string to a multibyte string
@@ -125,7 +125,7 @@ size_t mb_to_wchar(wchar_t *dest, const char *src, size_t maximum);
  *  If an invalid multibyte character is encountered,
  *  a -1 value is returned.
  */
-size_t wchar_to_mb(char *dest, const wchar_t *src, size_t maximum);
+size_t wchar_to_mb(char *dest, wchar_t *src, size_t maximum);
 
 #if defined(LINUX) || defined(UNIX)
 /*!
@@ -162,11 +162,11 @@ size_t gb_to_utf8(char *destbuf, char *srcbuf, size_t maximum);
 #endif
 
 #if defined(WIN32) || defined(WINCE)
-size_t ansi_to_wchar(wchar_t *dest, const char *src, size_t maximum);
+size_t ansi_to_wchar(wchar_t *dest, char *src, size_t maximum);
 
-size_t wchar_to_ansi(char *dest, const wchar_t *src, size_t maximum);
+size_t wchar_to_ansi(char *dest, wchar_t *src, size_t maximum);
 
-size_t utf8_to_wchar(wchar_t *dest, const char *src, size_t maximum);
+size_t utf8_to_wchar(wchar_t *dest, char *src, size_t maximum);
 
 size_t wchar_to_utf8(char *dest, wchar_t *src, size_t maximum);
 #endif
