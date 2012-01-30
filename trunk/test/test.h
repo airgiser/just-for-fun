@@ -17,6 +17,7 @@ namespace ucb
 
         virtual void Run() = 0;
         virtual int GetTestCaseCount() const = 0;
+        virtual const char *GetName()  = 0;
     };
 }
 
