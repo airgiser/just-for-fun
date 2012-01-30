@@ -34,6 +34,11 @@ int TestCase::GetTestCaseCount() const
     return 1;
 }
 
+string TestCase::ToString() const
+{
+    return "TestCase " + GetName();
+}
+
 void TestCase::AssertImp(bool condition, const string &expression,
                     string fileName, long lineNumber)
 {

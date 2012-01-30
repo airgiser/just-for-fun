@@ -1,6 +1,6 @@
 CPP = g++
 OFLAG = -o
-src = main.cpp testcase.cpp testresult.cpp testfailure.cpp
+src = main.cpp testcase.cpp testsuite.cpp testresult.cpp testfailure.cpp 
 
 all:
 	$(CPP) $(OFLAG) test $(src)

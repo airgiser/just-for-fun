@@ -8,17 +8,25 @@
 #ifndef UCB_TEST_H
 #define UCB_TEST_H
 
+#include <string>
+
 namespace ucb
 {
-    class Test
-    {
-    public:
-        virtual ~Test() {}
 
-        virtual void Run() = 0;
-        virtual int GetTestCaseCount() const = 0;
-        virtual const char *GetName()  = 0;
-    };
-}
+using std::string;
+class TestResult;
+
+class Test
+{
+public:
+    virtual ~Test() {}
+
+    virtual void Run() = 0;
+    virtual int GetTestCaseCount() const = 0;
+    virtual string GetName() const = 0;
+    virtual string ToString() const = 0;
+};
+
+}// namespace ucb
 
 #endif // UCB_TEST_H

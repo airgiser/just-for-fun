@@ -13,32 +13,39 @@
 
 namespace ucb
 {
-    using std::vector;
-    using std::ostream;
-    using std::string;
-    using std::cout;
 
-    class Test;
-    class TestFailure;
-    class TestResult
-    {
-    public:
-        TestResult(ostream *out = &cout);
-        virtual ~TestResult();
+using std::vector;
+using std::ostream;
+using std::string;
+using std::cout;
 
-        virtual void AddFailure(Test *test, const string &expression,
-                const string &fileName, long lineNumber);
+class Test;
+class TestFailure;
 
-        virtual void ReportRunning(Test *test);
-        virtual void ReportResult();
+/*
+ * \class TestResult
+ */
+class TestResult
+{
+public:
+    TestResult(ostream *out = &cout);
+    virtual ~TestResult();
 
-    protected:
-        vector<TestFailure *> m_failures;
+    virtual void AddFailure(Test *test, const string &expression,
+    const string &fileName, long lineNumber);
 
-        ostream *m_out;
-    private:
-        TestResult(const TestResult &other);
-        TestResult &operator=(const TestResult &other);
-    };
-}
+    virtual void ReportRunning(Test *test);
+    virtual void ReportResult();
+
+protected:
+    vector<TestFailure *> m_failures;
+
+    ostream *m_out;
+private:
+    TestResult(const TestResult &other);
+    TestResult &operator=(const TestResult &other);
+};
+
+}// namespace ucb
+
 #endif // UCB_TEST_RESULT_H
