@@ -13,35 +13,37 @@
 
 namespace ucb
 {
-    using std::string;
 
-    class TestResult;
+using std::string;
 
-    /*
-     * Test Case.
-     */
-    class TestCase : public Test
-    {
-    public:
-        TestCase(TestResult *testResult = NULL);
-        virtual ~TestCase();
+/*
+ * Test Case.
+ */
+class TestCase : public Test
+{
+public:
+    TestCase(TestResult *testResult = NULL);
+    virtual ~TestCase();
 
-        void Run();
-        int GetTestCaseCount() const;
-    protected:
-        TestCase(const TestCase &other);
-        TestCase& operator=(const TestCase &other);
+    void Run();
+    int GetTestCaseCount() const;
+    string ToString() const;
+protected:
+    TestCase(const TestCase &other);
+    TestCase& operator=(const TestCase &other);
 
-        virtual void DoTest() = 0;
+    virtual void DoTest() = 0;
 
-        void AssertImp(bool condition, const string &Expression,
-                string fileName, long lineNumber);
-    private:
-        TestResult *m_testResult;
-    };
+    void AssertImp(bool condition, const string &Expression,
+        string fileName, long lineNumber);
+private:
+    TestResult *m_testResult;
+};
 
+// Macro Assert
 #define Assert(condition) \
     (this->AssertImp((condition), (#condition), \
                      __FILE__, __LINE__))
-}
+} // namespace ucb
+
 #endif// UCB_TEST_CASE_H

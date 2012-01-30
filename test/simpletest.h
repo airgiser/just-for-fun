@@ -7,11 +7,7 @@ using namespace ucb;
 class SimpleTest : public TestCase
 {
 public:
-    SimpleTest() {}
-
-    ~SimpleTest() {}
-
-    const char *GetName()
+    string GetName() const
     {
         return "SimpleTest";
     }
