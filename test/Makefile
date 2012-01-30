@@ -1,10 +1,10 @@
 CPP = g++
 OFLAG = -o
-src = test.h testcase.h testcase.cpp testresult.h testresult.cpp \
-	  testfailure.h testfailure.cpp
+src = main.cpp testcase.cpp testresult.cpp testfailure.cpp
 
 all:
-	$(CPP) $(src)
+	$(CPP) $(OFLAG) test $(src)
 
 clean:
+	rm -f test
 	rm -f *~

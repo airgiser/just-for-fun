@@ -22,24 +22,26 @@ namespace ucb
      */
     class TestCase : public Test
     {
-        public:
-            TestCase(TestResult *testResult);
-            virtual ~TestCase();
+    public:
+        TestCase(TestResult *testResult = NULL);
+        virtual ~TestCase();
 
-            virtual void Run() = 0;
-            virtual int GetTestCaseCount() const;
-        protected:
-            Test(const Test &other);
-            Test& operator=(const Test &other);
+        void Run();
+        int GetTestCaseCount() const;
+    protected:
+        TestCase(const TestCase &other);
+        TestCase& operator=(const TestCase &other);
 
-            void AssertImp(bool condition, const string &Expression,
-                    const char *fileName, long lineNumber);
-        private:
-            TestResult *m_testResult;
+        virtual void DoTest() = 0;
+
+        void AssertImp(bool condition, const string &Expression,
+                string fileName, long lineNumber);
+    private:
+        TestResult *m_testResult;
     };
 
 #define Assert(condition) \
     (this->AssertImp((condition), (#condition), \
-                     __LINE__, __FILE__))
+                     __FILE__, __LINE__))
 }
 #endif// UCB_TEST_CASE_H
