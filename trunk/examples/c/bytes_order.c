@@ -81,9 +81,14 @@ static void bytes_print_test(int val)
 int main(int argc, char *argv[])
 {
     int val = 0x10203040;
+    int mval = -val;
     bytes_print_test(val);
+    printf("\n");
+    bytes_print_test(mval);
+    printf("\n");
 
     char *str = "123ABC";
+    printf("%s:\n", str);
     bytes_print(str, strlen(str) + 1);
 
     return 0;
