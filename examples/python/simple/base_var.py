@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # Filename: base_var.py
 i = 5
 print i
