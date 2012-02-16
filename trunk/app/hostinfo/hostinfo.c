@@ -7,28 +7,28 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-int main(int argc, char *argv[])
+struct hostent *gethost(char *hostname)
 {
-    char **pptr = NULL;
     struct in_addr addr;
     struct hostent *hostptr;
 
-    if(argc != 2)
-    {
-        fprintf(stderr, "usage: %s <domain name or dotted-decimal>\n", argv[0]);
-        exit(0);
-    }
-
-    if(inet_aton(argv[1], &addr) != 0)
+    if(inet_aton(hostname, &addr) != 0)
     {
         hostptr = gethostbyaddr((const char *)&addr, sizeof(addr), AF_INET);
     }
     else
     {
-        hostptr = gethostbyname(argv[1]);
+        hostptr = gethostbyname(hostname);
     }
+}
+
+void printhostinfo(struct hostent *hostptr)
+{
+    char **pptr = NULL;
+    struct in_addr addr;
 
     printf("official hostname: %s\n", hostptr->h_name);
+
     for(pptr = hostptr->h_aliases; *pptr != NULL; pptr++)
     {
         printf("alias: %s\n", *pptr);
@@ -39,6 +39,20 @@ int main(int argc, char *argv[])
         addr.s_addr = ((struct in_addr *)*pptr)->s_addr;
         printf("address: %s\n", inet_ntoa(addr));
     }
+}
+
+int main(int argc, char *argv[])
+{
+    struct hostent *hostptr;
+
+    if(argc != 2)
+    {
+        fprintf(stderr, "usage: %s <domain name or dotted-decimal>\n", argv[0]);
+        exit(0);
+    }
+
+    hostptr = gethost(argv[1]);
+    printhostinfo(hostptr);
 
     exit(0);
 }
