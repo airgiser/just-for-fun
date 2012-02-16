@@ -11,7 +11,7 @@
 
 #if defined(WIN32) || defined(WINCE)
 #elif defined(LINUX) || defined(UNIX)
-int socket_get_addr(struct sockaddr_in *addr, char *address, unsigned int port)
+static int socket_get_addr(struct sockaddr_in *addr, char *address, int port)
 {
     struct hostent *host = NULL;
     assert(addr != NULL && address != NULL);
@@ -28,5 +28,29 @@ int socket_get_addr(struct sockaddr_in *addr, char *address, unsigned int port)
     bzero(&(addr->sin_zero), 8);
 
     return 0;
+}
+
+int socket_open_clientfd(char *hostname, int port)
+{
+    int clientfd;
+    struct sockaddr_in serveraddr;
+
+    clientfd = socket(AF_INET, SOCK_STREAM, 0);
+    if(clientfd < 0)
+    {
+        return -1;
+    }
+
+    if(socket_get_addr(&serveraddr, hostname, port) < 0)
+    {
+        return -2;
+    }
+
+    if(connect(clientfd, (struct sockaddr *)&serveraddr, sizeof(serveraddr))<0)
+    {
+        return -1;
+    }
+
+    return clientfd;
 }
 #endif
