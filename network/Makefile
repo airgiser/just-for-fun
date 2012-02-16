@@ -4,7 +4,7 @@ DFLAG = -D LINUX
 OFLAG = -o
 LFLAG = -lpthread
 
-serversrc = server_test.c
+serversrc = server_test.c socket.c
 clientsrc = client_test.c socket.c
 
 all: \

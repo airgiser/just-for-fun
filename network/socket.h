@@ -25,6 +25,7 @@ UCB_BEGIN
 #if defined(WIN32) || defined(WINCE)
 #elif defined(LINUX) || defined(UNIX)
 int socket_open_clientfd(char *hostname, int port);
+int socket_open_listenfd(int port);
 #endif
 
 UCB_END
