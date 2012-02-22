@@ -1,4 +1,4 @@
-#/usr/bin/python
+#!/usr/bin/python
 
 '''This is a simple module,
 This is the module documentation'''
