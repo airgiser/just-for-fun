@@ -4,4 +4,7 @@ all:
 	gcc -shared point.c bezier_spline.o bspline.c cucb_gl_wrap.o -o _cucb_gl.so
 clean:
 	rm -f *.o *.so test
+	rm -f cucb_gl.py
+	rm -f cucb_gl.pyc
+	rm -f cucb_gl_wrap.c
 	rm -f *~
