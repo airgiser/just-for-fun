@@ -17,9 +17,13 @@ def is_valid_extension(filename):
 
 def get_line_count(filename):
     count = 0
-    fin = open(filename)
-    for line in fin.xreadlines():
-        count += 1
+    try:
+        fin = open(filename)
+        for line in fin.xreadlines():
+            count += 1
+    except:
+        count = 0
+
     return count
 
 def main():
