@@ -21,11 +21,7 @@ highlight_style[Token_Keyword] = '#FF0000'
 highlight_style[Token_Special] = '#009090'
 highlight_style[Token_Text] = '#000000'
 
-SpecialWords = ["self", "True", "true", "False", "false"]
-SpecialWords.append("input")
-SpecialWords.append("raw_input")
-SpecialWords.append("open")
-SpecialWords.append("file")
+keywords = []
 
 class ToHtml:
     def __init__(self, srcfilename, destfilename, linenumber):
@@ -40,6 +36,7 @@ class ToHtml:
     def format(self, linenumber):
         i = 0
         self.destlines.append('<pre style = "background-color: #F0F0C0;">\n')
+        self.comment = 0
         for line in self.source:
             if linenumber:
                 i += 1
@@ -48,6 +45,8 @@ class ToHtml:
                 self.destlines.append('</span>')
 
             self.pos = 0
+            if self.comment < 10:
+                self.comment = 0
             tokenize.tokenize(StringIO(line).readline, self)
         self.destlines.append("</pre>\n")
 
@@ -56,6 +55,20 @@ class ToHtml:
         if tokentype in [token.NEWLINE, tokenize.NL]:
             self.destlines.append(tokentext)
             return
+
+        # comment 10-in comment
+        if tokentype != token.STRING and tokentext == "/":
+            self.comment = 1
+        if tokentype != token.STRING and self.comment == 1 and tokentext == "*":
+            tokentype = tokenize.COMMENT
+            self.comment = 10
+        if self.comment == 10 and tokentext == "*":
+            self.comment = 11
+        if self.comment == 11 and tokentext == "/":
+            tokentype = tokenize.COMMENT
+            self.comment = 0
+        if self.comment >= 10:
+            tokentype = tokenize.COMMENT
 
         # whitespace
         oldpos = self.pos
@@ -67,12 +80,24 @@ class ToHtml:
         # style
         if tokentype == token.NAME and keyword.iskeyword(tokentext):
             tokentype = Token_Keyword
-        elif tokentext in SpecialWords:
+        elif tokentype == token.NAME and is_keywords(tokentext):
             tokentype = Token_Special
+
         color = highlight_style.get(tokentype, highlight_style[Token_Text])
         self.destlines.append('<span style = "color: %s;">' % color)
         self.destlines.append(cgi.escape(tokentext))
         self.destlines.append('</span>')
+
+def init_keywords():
+    for keyword in open("keywords").readlines():
+        if(keyword[0] == '#'):
+            continue
+        keywords.append(keyword[:keyword.find('\n')])
+
+def is_keywords(text):
+    if text in keywords:
+        return True
+    return False
 
 def main():
     import os, sys
@@ -87,6 +112,8 @@ def main():
     linenumber = False
     if(select.lower() == 'y'):
         linenumber = True
+
+    init_keywords()
     ToHtml(srcfilename, destfilename, linenumber)
 
     print("Done.")
