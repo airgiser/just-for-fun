@@ -56,7 +56,7 @@ clean:
 	rm -f event_test
 	rm -f cppstr_test
 	rm -f log_test
-	rm -R logs
 	rm -f test.bin
 	rm -f *.o
 	rm -f *~
+	rm -R logs
