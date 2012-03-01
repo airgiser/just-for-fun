@@ -50,7 +50,7 @@ static void test_str_slist()
     int i = 0;
     for(i = 0; i < num; i++)
     {
-        slist_append(strlist, strdup("T"));
+        slist_append(strlist, strdup("O"));
     }
 
     i = 3;

@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2012.
  *
- * \brief The implementation of single list.
+ * \brief The implementation of slist.
  */
 
 #include <assert.h>

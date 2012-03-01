@@ -8,13 +8,14 @@
 #define UCB_ADT_DLIST_H
 
 #include "typedef.h"
+#include "locker.h"
 
 UCB_BEGIN
 
 struct _DList;
 typedef struct _DList DList;
 
-DList *dlist_create(DataDestroyFunc destroy, void *context);
+DList *dlist_create(DataDestroyFunc destroy, void *context, Locker *locker);
 
 Ret dlist_append(DList *thiz, void *data);
 Ret dlist_preappend(DList *thiz, void *data);
@@ -27,7 +28,7 @@ size_t dlist_get_length(DList *thiz);
 int dlist_find(DList *thiz, DataCompareFunc cmp, void *data);
 Ret dlist_foreach(DList *thiz, DataVisitFunc visit, void *context);
 
-void dlist_destroy(DList *thiz):
+void dlist_destroy(DList *thiz);
 
 UCB_END
 

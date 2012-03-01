@@ -36,6 +36,7 @@ str_test: $(strsrc)
 	$(C) $(DFLAG) $(OFLAG) str_test $(strsrc)
 
 locker_test: $(lockersrc)
+	cp locker.h ../algorithms/datastruct/locker.h
 	$(C) $(DFLAG) $(OFLAG) locker_test $(lockersrc) $(LFLAG) 
 
 event_test: $(eventsrc)
