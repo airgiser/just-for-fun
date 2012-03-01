@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) airfox 2012.
  *
- * \brief A single list.
+ * \brief slist. 
  */
 
 #ifndef UCB_ADT_SLIST_H
