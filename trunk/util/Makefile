@@ -12,6 +12,7 @@ lockersrc = locker_normal.c thread.c locker_test.c
 eventsrc = event_test.c event.c thread.c
 cppstrsrc = stringoper.cpp string_test.cpp
 logsrc = log_test.cpp logger.cpp path.c string.c  time.c
+tokensrc = parse_token_test.c parse_token.c
 
 all: \
 	time_test \
@@ -21,7 +22,8 @@ all: \
 	locker_test \
 	event_test \
 	cppstr_test \
-	log_test
+	log_test \
+	token_test
 
 time_test: $(timesrc)
 	$(C) $(DFLAG) $(OFLAG) time_test $(timesrc)
@@ -48,15 +50,11 @@ cppstr_test: $(cppstrsrc)
 log_test: $(logsrc)
 	$(CPP) $(DFLAG) $(OFLAG) log_test $(logsrc)
 
+token_test: $(tokensrc)
+	$(C) $(OFLAG) token_test $(tokensrc)
+
 clean:
-	rm -f time_test
-	rm -f file_test
-	rm -f path_test
-	rm -f str_test
-	rm -f locker_test
-	rm -f event_test
-	rm -f cppstr_test
-	rm -f log_test
+	rm -f *_test
 	rm -f test.bin
 	rm -f *.o
 	rm -f *~
