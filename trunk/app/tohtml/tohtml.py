@@ -64,7 +64,7 @@ class ToHtml:
         if tokentype == tokenize.COMMENT and self.cstyle:
             tokentype = Token_Macro
 
-        # comment
+        # comment state
         if tokentext == "/" and line[scol+1] == "*":
             self.CComment = True
         elif tokentext == "//":
@@ -75,6 +75,7 @@ class ToHtml:
             tokentype = tokenize.COMMENT
             self.CComment = False
 
+        # is comment or not
         if self.CComment or self.CppComment:
             tokentype = tokenize.COMMENT
 
