@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>A simple canvas</title>
+    <script src = "simplecanvas.js">
+    </script>
+</head>
+<body>
+    <canvas id = "simpleCanvas" width = 800 height = 450 
+    onmousedown = "mouseDown(event)"
+    onmousemove = "mouseMove(event)"
+    onmouseup = "mouseUp(event)"
+    onmouseout = "mouseOut(event)">
+    Your browser doesn't support the canvas tag
+    </canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById('simpleCanvas');
+        var context=canvas.getContext('2d');
+        context.fillStyle='#CCDDEE';
+        context.fillRect(0, 0, 800, 600);
+    </script>
+    <div id="coord">
+    </div>
+</body>
+</html>
