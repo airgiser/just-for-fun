@@ -26,14 +26,15 @@ def csv2sqlite(csvfilename, dbfilename):
       script = "INSERT INTO parcel values(%s)" % ",".join(len(row)*"?")
       cursor.execute(script,  row)
     rowNum = rowNum + 1
-  conn.commit();
+  conn.commit()
 
   script = "SELECT * from parcel order by RSize"
   cursor.execute(script)
   for i in cursor:
     print i
 
-  cursor.close();
+  cursor.close()
+  conn.close()
 
 def main():
   csvfilename = "parcel.csv"
