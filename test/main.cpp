@@ -1,6 +1,4 @@
 /*
- * Copyright (c) airfox 2012
- *
  * \brief unit test demo.
  */
 

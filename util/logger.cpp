@@ -2,7 +2,6 @@
  * Copyright (c) airfox 2012
  *
  * \brief Implementation of file logger.
- * \author airfox<airgis@163.com>
  */
 
 #include "logger.h"

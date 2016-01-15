@@ -2,7 +2,6 @@
  * Copyright (c) airfox 2012
  *
  * \brief Write message to log file.
- * \author airfox<airgis@163.com>
  */
 
 #ifndef UCB_LOGGER_H

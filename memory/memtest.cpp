@@ -31,4 +31,6 @@ int main() {
     delete r;
     cout << ">>end." << endl;
     MEMCHECK_OFF();
+
+    return 0;
 }

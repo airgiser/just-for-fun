@@ -2,7 +2,6 @@
  * Copyright (c) airfox 2012
  *
  * \brief a simple test framework.
- * \author airfox<airgis@163.com>
  */
 
 #ifndef UCB_TEST_SUITE_H
@@ -15,8 +14,6 @@ namespace ucb
 {
 
 using std::vector;
-
-class TestCase;
 
 /*
  * \class TestSuite

@@ -2,7 +2,6 @@
  * Copyright (c) airfox 2012
  *
  * \brief Collects the result of test case.
- * \author airfox<airgis@163.com>
  */
 
 #include "testresult.h"
