@@ -1,21 +1,26 @@
 /*
  * Copyright (c) arifox 2012.
  *
- * \brief TODO: A memory check utility.
+ * \brief A memory check utility.
  */
 
-#include "memcheck.h"
+#include <cstdio>
+#include <cstdlib>
+#include <cassert>
+#include <cstddef>
 #include <vector>
-using std::vector;
+using namespace std;
+#undef new
 
-namespace
+bool activeFlag = false;
+
+namespace ucb
 {
 
 class MemCheck
 {
 public:
-    struct MemInfo
-    {
+    struct MemInfo {
         void *ptr;
         const char *filename;
         long line;
@@ -23,36 +28,92 @@ public:
         bool isFree;
     };
 
-    void Add(const MemInfo &info)
-    {
-        m_memSet.push_bask(info);
+    MemCheck() {
     }
 
-    void Del(void *ptr)
-    {
-        size_t i = 0;
-        for(; i < m_memSet.size(); i++)
-        {
-            if(m_memSet[i].ptr == ptr)
-            {
-                m_memSet[i].isFree = true;
+    ~MemCheck() {
+        for (size_t i = 0; i < _memSet.size(); i++) {
+            MemInfo &memInfo = _memSet[i];
+            if (!_memSet[i].isFree) {
+                printf("Memory leaked at: %p (file: %s line: %ld)\n", 
+                        memInfo.ptr, memInfo.filename, memInfo.line);
+            }
+        }
+    }
+
+    void *allocate(size_t size, const char *file, long line) {
+        void *p = malloc(size);
+        if (activeFlag) {
+            MemInfo memInfo;
+            memInfo.ptr = p;
+            memInfo.filename = file;
+            memInfo.line = line;
+            add(memInfo);
+            
+            printf("Allocated %u bytes at address %p (file: %s, line: %ld)\n", 
+                    size, p, file, line);
+        }
+        return p;
+    }
+
+    void release(void *p) {
+        if (find(p) >= 0) {
+            free(p);
+            del(p);
+            printf("Release memory at address: %p\n", p);
+        }
+        else if (!p && activeFlag) {
+            printf("Attempt to delete unknown pointer: %p\n", p);
+        }
+    }
+
+private:
+
+    int find(void *p) {
+        for (size_t i = 0; i < _memSet.size(); i++) {
+            if (_memSet[i].ptr == p) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    void add(const MemInfo &info) {
+        _memSet.push_back(info);
+    }
+
+    void del(void *ptr) {
+        // Mark pointer as freed
+        for(size_t i = 0; i < _memSet.size(); i++) {
+            if(_memSet[i].ptr == ptr) {
+                _memSet[i].isFree = true;
             }
         }
     }
 
 private:
-    static vector<MemInfo> m_memSet;
+    vector<MemInfo> _memSet;
 };
 
-} // anonymous namespace
+static MemCheck memCheck;
 
-void *operator new(size_t, const char *file, long line)
+} // ucb namespace
+
+void *operator new(size_t size, const char *file, long line)
 {
-    return NULL;
+    return ucb::memCheck.allocate(size, file, line);
 }
 
-void *operator new[](size_t, const char *file, long line)
+void *operator new[](size_t size, const char *file, long line)
 {
-    return NULL;
+    return operator new(size, file, line);
+}
+
+void operator delete(void *p) {
+    ucb::memCheck.release(p);
+}
+
+void operator delete[](void *p) {
+    operator delete(p);
 }
 
