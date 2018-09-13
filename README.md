@@ -1,3 +1,1 @@
-# ucb
-
-useful code blocks
+JUST FOR FUN
